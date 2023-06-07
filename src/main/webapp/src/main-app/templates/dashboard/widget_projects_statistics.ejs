@@ -1,0 +1,22 @@
+<div data-status="empty" class="module module-widget-new module-quotes module-stats">
+                <header>
+                  <span><a <% if(permissionsTable['projects_browse']==1){ %> href="#!projects/active/1"  <% } %> data-localize="<%= localizeHeader %>" >Projects statistics</a></span>
+                  <span class="tools">
+                    <% if(dashboards.options.IE8==false){ %> <a class="widget-detach"><i class="icon-widget-detach"><%== $.View("templates/layouts/icons/x_icon.ejs",{}) %></i></a> <% } %>
+                  </span>
+                </header>
+                <section class="content">
+                      <div class="stat-counter waiting-quotes">
+                      	  <span data-localize="modules.dashboard.x-opened-projects">
+                        {0} opened projects</span>
+                        
+                     
+                      </div>
+                      <div class="stat-counter active-quotes">
+                        <span data-localize="modules.dashboard.x-closed-projects">
+                        {0} closed projects</span>
+                       
+                        
+                      </div>
+                </section>
+              </div>

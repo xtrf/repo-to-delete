@@ -1,0 +1,75 @@
+<section class="module section-header">
+                 <header>
+                   <h2 data-localize="modules.reports.header">Reports</h2>
+                 </header>
+               </section>
+               <section class="content reports-list">
+<% $.each(this.reports, function(i, report){ %>
+                 <div class="module module-report collapsed"
+                  reportID="<%= report.id %>"
+                  officeID="<%= office.id %>">
+                   <header>
+                     <h3><a id="" class="" href="#!report/<%= report.id %>/<%= office.id %>"><%= report.localizedName %></a></h3>
+
+                    <% if (offices.length > 1) { %>
+                     <div class="edit-office pull-right">
+                      <dl class="meta report-action-edit-office">
+                        <dt class="office" data-localize="general.office">Office</dt>
+                        <dd class="office">
+                          <span class="office-name"><%= office.name %></span>
+                          <i class="icon-id-edit"></i>
+                        </dd>
+                      </dl>
+
+                      <div class="dropdown-select2 dropdown-select2-small pull-right hide">
+                        <div data-toggle="dropdown" id="item-chosen" class="dropdown-toggle">
+                          <% if(office.name.length>60) { %><%= office.name.substr(0,57)+"..." %><% }else { %><%= office.name %><% } %>
+                          <b class="caret"></b>
+                        </div>
+                        <ul class="dropdown-menu">
+                          <% $.each(offices, function(i, office) { %>
+                          <li>
+                            <a class="report-action-change-office" officeID="<%= office.id %>">
+                              <span><%= office.name %></span>
+                            </a>
+                          </li>
+                          <% }) %>
+                        </ul>
+                      </div>
+                     </div>
+                    <% } %>
+                   </header>
+                   <div class="content">
+                     <section class="action-bar">
+                       <div class="field field-report-type">
+                         <!-- links allows you to open chart/table preview -->
+                         <a class="report-type report-type-table view-report"><i class="icon-report-table"></i></a>
+                         <% if(report.chartType!=null) { %>
+                         <a class="report-type report-type-chart view-chart"><i class="icon-report-chart"></i></a>
+                         <% } %>
+                       </div>
+                       <div class="field field-separator"></div>
+                       <div class="field field-report-preview">
+                         <button class="link-primary expand view-report" action="show" data-localize="general.show-preview">Show preview</button>
+                         <button class="link-primary expand hide-report" style="display:none;" action="hide" data-localize="general.hide-preview">Hide preview</button>
+                       </div>
+                       <div class="field field-actions">
+                       	 <a class="btn btn-mini btn-primary view-full-report" href="#!report/<%= report.id %>/<%= office.id %>"><i class="icon-report"></i> <span data-localize="modules.reports.show-full-report">Show full report</span></a>
+                         <a class="btn btn-mini action-download-report" href="<%= report.downloadCSV %>"><span data-localize="general.download">Download</span> <strong>CSV</strong></a>
+                       </div>
+                     </section>
+                     <div class="content-wrapper" style="display:none;">
+                     </div>
+                   </div>
+                 </div>
+<% }) %>
+
+
+
+<div class="pagination pagination-centered">
+                              
+                              </div>
+
+
+
+               </section>

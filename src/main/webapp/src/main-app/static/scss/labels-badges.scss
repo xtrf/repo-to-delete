@@ -1,0 +1,78 @@
+// LABELS & BADGES
+// ---------------
+
+// Base classes
+.label,
+.badge {
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 14px; // ensure proper line-height if floated
+  color: $white;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.1);
+  background-color: $grayLight;
+}
+// Set unique padding and border-radii
+.label {
+  padding: 2px 4px 2px;
+  @include border-radius(2px);
+  box-shadow: inset 0 1px 0px rgba(0,0,0,.1);
+
+}
+.badge {
+  padding: 1px 9px 2px;
+  @include border-radius(9px);
+}
+
+// Hover state, but only for links
+a {
+  &.label:hover,
+  &.badge:hover {
+    color: $white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+// Colors
+// Only give background-color difference to links (and to simplify, we don't qualifty with `a` but [href] attribute)
+.label,
+.badge {
+  // Important (red)
+  &-important         { background-color: $errorText; }
+  &-important[href]   { background-color: darken($errorText, 10%); }
+  // Warnings (orange)
+  &-warning           { background-color: $orange; }
+  &-warning[href]     { background-color: darken($orange, 10%); }
+  // Success (green)
+  &-success           { background-color: $successText; }
+  &-success[href]     { background-color: darken($successText, 10%); }
+  // Info (turquoise)
+  &-info              { background-color: $infoText; }
+  &-info[href]        { background-color: darken($infoText, 10%); }
+  // Inverse (black)
+  &-inverse           { background-color: $grayDark; }
+  &-inverse[href]     { background-color: darken($grayDark, 10%); }
+
+  &-project-open                { background-color: $open; }
+  &-project-complaint            { background-color: $orange; }
+  &-project-review             { background-color: $pendingReviewJobs; }
+  &-project-cancelled           { background-color: $xDarkGray;}
+  &-project-requested           { background-color: #65b5a1; }
+  &-quote-pending               { background-color: $pending; }
+  &-quote-waiting               { background-color: $waitingForAccept; }
+  &-quote-accepted              { background-color: $accepted; }
+  &-quote-created               { background-color: $projectCreated; }
+  
+}
+
+
+a:hover>.label{
+  text-decoration: none;
+}
+
+
+a.status-link:hover{
+  text-decoration: none;
+}

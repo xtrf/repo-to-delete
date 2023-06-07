@@ -1,0 +1,64 @@
+<div class="module module-quote module-single-view quote-waiting"
+					quoteID="<%= quote.idNumber %>"
+					quoteID2="<%= quote.id %>"
+					quote-status="<%= quote.status %>"
+					quote-agreed="<%= quote.totalAgreed.formattedAmount %>">
+	<div class="content">
+		<div class="content-wrapper">
+
+			<section class="tabs">
+				<ul class="nav nav-tabs" id="myTab">
+					<li class="active"><a tab="tasks"><i class="icon-tasks"></i> <span data-localize="general.tasks">Tasks</span></a>
+					</li>
+					<% if(quote.hasInputWorkfiles) { %>
+					<li class="active"><a class="files-tab-link" tab="files"><i class="icon-files"></i>
+						<span data-localize="general.files">Files</span></a></li>
+					<% }else { %>
+					<li class="disabled"><i class="icon-files"></i> <span data-localize="general.no-files">No files</span></li>
+					<% } %>
+
+					<% if(sessionObject.showResources !== false) { %>
+					<% if(quote.hasInputResources) { %>
+					<li
+					<% if(!quote.hasInputWorkfiles) { %> class="active" <% } %>><a class="files-tab-link"
+																																																																				tab="resources"><i class="icon-resources"></i> <span
+					data-localize="general.resources">Resources</span></a></li>
+
+					<% } else { %>
+					<li class="disabled"><i class="icon-resources"></i> <span data-localize="general.no-resources">No resources</span>
+					</li>
+					<% } %>
+					<% } %>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active content-tasks">
+
+					</div>
+					<div class="tab-pane content-files">
+
+					</div>
+
+					<div class="tab-pane content-resources">
+
+					</div>
+
+				</div>
+
+			</section>
+		</div>
+		<% if(permissionsTable['accept_and_reject_quote']) { %>
+		<div class="quote-actions">
+			<div class="field field-actions">
+				<a class="btn btn-next btn-large btn-accept-offer"><i class="icon-accept"></i>
+					<span data-localize="modules.quotes.accept-quote">Accept quote</span>
+				</a>
+				<a class="btn btn-danger btn-large btn-reject-quote">
+					<span data-localize="modules.quotes.reject-quote">Reject quote</span>
+				</a>
+			</div>
+		</div>
+		<% } %>
+	</div>
+
+
+</div>

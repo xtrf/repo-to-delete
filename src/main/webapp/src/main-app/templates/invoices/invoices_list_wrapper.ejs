@@ -1,0 +1,27 @@
+<section class="module section-header invoices-header">
+	<header>
+		<h2 data-localize="modules.invoices.header">Invoices</h2>
+		<span class="tools">
+			<form class="search" id="search-invoices">
+				<div class="search-input-wrapper">
+					<input type="text" placeholder="Invoice date" name="invoiceDate" class="datepicker" data-localize-2="general.invoice-date" />
+					<i class="close clear-datepicker" data-target="invoiceDate"></i>
+				</div>
+				<div class="search-input-wrapper">
+					<input type="text" placeholder="Search by id" data-localize-2="general.search-by-id" name="invoiceId" class="search"/>
+					<i class="close" id="clear-search"></i>
+				</div>
+				<button type="submit" class="btn right" data-localize="general.search-on-button">Search</button>
+			</form>
+			<div class="btn-group view-switch" data-toggle="buttons-radio">
+				<a class="btn left" tab="active" data-localize="general.unpaid">Unpaid</a>
+				<a class="btn right" tab="archive" data-localize="general.paid">Paid</a>
+			</div>
+		</span>
+	</header>
+</section>
+
+<section class="content invoices-list">
+
+</section>
+                

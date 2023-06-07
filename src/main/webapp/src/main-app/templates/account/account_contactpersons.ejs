@@ -1,0 +1,54 @@
+<% if(this.contactPersons.length>0) { %>
+<section class="contact-persons-list">
+
+    <% $.each(this.contactPersons, function(i, person){ %>
+
+    <div class="contact-person" user="<%= person.id %>">
+        <div class="contact-info">
+            <div class="profile-pic pull-left"><img src="<%= person.avatar %>" onerror="setDefaultAvatar2(this)"></div>
+            <div class="details">
+                <span><%= person.name %></span>
+                <div class="job-title"><%= person.position %></div>
+            </div>
+            <ul class="tools">
+                <% if(editPermission==true) { %>
+                <li><a class="link-primary link-small link-edit-sm"><i class="icon-id-edit icon"></i><span data-localize="general.edit-social-media">Edit Social Media</span></a></li>
+                <li><a class="link-primary link-small link-edit"><i class="icon-id-edit icon"></i><span data-localize="general.edit">Edit</span></a></li>
+                <% } %>
+                <% if(deletePermission==true && person.showDelete==true) { %>
+                <li><a class="link-warning link-small link-delete"><i class="icon-file-remove icon"></i><span data-localize="general.delete">Delete</span></a></li>
+                <% } %>
+            </ul>
+        </div>
+
+        <div class="content contact-details">
+
+        </div>
+    </div>
+    <% }) %>
+
+
+
+
+</section>
+
+<% }else{ %>
+<section class="contact-persons-list">
+
+    <div class="empty-placeholder" style="text-align:center">
+        <% if(addPermission==true) { %>
+        <a class="new-contact-person">
+            <i class="icon icon-no-persons"></i>
+        </a>
+        <% } %>
+        <br><br>
+        <span data-localize="modules.my-account.no-contact-persons">You have no contact persons</span>
+        <br><br>
+        <% if(addPermission==true) { %>
+        <a class="btn btn-cta btn-large new-contact-person"><i class="icon-qr-white"></i> <span data-localize="modules.my-account.add-new-contact-person">Add new contact person</span></a>
+        <% } %>
+    </div>
+
+
+</section>
+<% } %>

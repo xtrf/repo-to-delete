@@ -1,0 +1,11 @@
+<%== $.View("templates/projects/projects_list_header.ejs",{}) %>
+<section class="content">
+	<div class="empty-set-placeholder row module-project">
+		<div class="span12 active-counter active-counter-search">
+			<div class="counter">
+				<span><span data-localize="general.no-items-to-display">No items to display.</span> <a data-localize="general.want-to-clear-your-search-criteria" class="clear-criteria">Want to clear you search criteria?</a></span>
+			</div>
+		</div>
+	</div>
+</section><% if(tab === 'history') { %>
+<table class="projects table"></table><% } %>

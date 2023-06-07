@@ -1,0 +1,79 @@
+<div class="module module-quote module-single-view quote-accepted"
+					quoteID="<%= quote.idNumber %>"
+					quoteID2="<%= quote.id %>"
+					quote-status="<%= quote.status %>"
+					quote-agreed="<%= quote.totalAgreed.formattedAmount %>">
+	<div class="content">
+		<section class="status-information">
+			<div class="content">
+
+				<div class="field field-cost">
+					<strong>
+						<% if(sessionObject.showVatInfo==true){ %>
+						<i class="icon-info-small"
+									rel="tooltip"
+									title="excl. VAT"
+									data-original-title="excl. VAT"
+									data-placement="top"></i>
+						<% } %>
+						<span data-localize="general.total-cost">Total cost</span></strong>
+					<big><%= quote.totalAgreed.formattedAmount %></big>
+				</div>
+
+				<div class="field field-accepted last">
+
+				</div>
+
+			</div>
+		</section>
+		<div class="content-wrapper">
+
+			<section class="tabs">
+				<ul class="nav nav-tabs" id="myTab">
+					<li class="active"><a tab="tasks"><i class="icon-tasks"></i> <span data-localize="general.tasks">Tasks</span></a>
+					</li>
+
+
+					<% if(quote.hasInputWorkfiles) { %>
+					<li class="active"><a class="files-tab-link" tab="files"><i class="icon-files"></i>
+						<span data-localize="general.files">Files</span></a></li>
+					<% }else { %>
+					<li class="disabled"><i class="icon-files"></i> <span data-localize="general.no-files">No files</span></li>
+					<% } %>
+
+					<% if(sessionObject.showResources !== false) { %>
+					<% if(quote.hasInputResources) { %>
+					<li
+					<% if(!quote.hasInputWorkfiles) { %> class="active" <% } %>><a class="files-tab-link"
+																																																																				tab="resources"><i class="icon-files"></i> <span
+					data-localize="general.resources">Resources</span></a></li>
+
+					<% } else { %>
+					<li class="disabled"><i class="icon-resources"></i> <span data-localize="general.no-resources">No resources</span>
+					</li>
+					<% } %>
+					<% } %>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active content-tasks">
+
+					</div>
+					<div class="tab-pane content-files">
+
+					</div>
+
+					<div class="tab-pane content-resources">
+
+					</div>
+
+				</div>
+
+			</section>
+
+
+		</div>
+
+	</div>
+
+
+</div>

@@ -1,0 +1,314 @@
+.modal-body-footer#step-2-new{
+	.modal-body .content{
+		margin:0px;
+	}
+
+    .uploader-accordion .add-ref-materials{
+        font-size: 16px;
+        margin-left: 30px;
+        padding-top: 9px;
+        overflow: hidden;
+        display: block;
+    }
+	
+    .uploader-accordion .uploader-group header{
+        font-size: 18px;
+        color: $xBlue;
+        padding: 18px 30px 0px 30px;
+        overflow: hidden;
+        
+        >a{
+            @extend .pull-left;
+            text-shadow: 1px 1px 0px $white;
+            margin-bottom: 18px;
+        }
+        
+        .tools{
+            @extend .pull-right;
+            
+            a.link-primary{
+                line-height: 22px;
+                vertical-align: middle;
+                font-size: 11px;    
+                margin-right: 18px;        
+            }
+
+            form{
+                float: right;
+            }
+
+            .fileupload-buttonbar .btn{
+                float: right;
+            }
+        }
+    }
+
+    .uploader-accordion .uploader-group{
+        @include gradient-vertical(#f5f5f5, #ededed);
+        border-bottom: 2px solid #cacaca;
+    }
+
+    .uploader-accordion .accordion-body{
+        margin: 0px 30px 18px 30px;
+    	background: white;
+        width: 630px;
+   	 	position: relative;
+   	 	background: url(../img/uploader-bg.png);
+   		z-index: 0;
+
+   		.actions{
+   			width: 100%;
+   			height: 40px;
+   			background: #8c8b8c;
+   			@include box-shadow(inset 0px 2px 2px #787778); 
+   			-webkit-border-bottom-right-radius: 2px;
+  			-webkit-border-bottom-left-radius: 2px;
+  			-moz-border-radius-bottomright: 2px;
+  			-moz-border-radius-bottomleft: 2px;
+  			border-bottom-right-radius: 2px;
+  			border-bottom-left-radius: 2px;
+  		
+        	>a{
+  		    	float: right;
+  			 	height: 40px;
+  	 			padding:  0px 12px 0 9px;
+  				line-height: 40px;
+  				color: white;
+  				text-shadow: none;
+  				border-left: 1px solid #a3a2a3;
+          @include border-radius(0);
+  				@include transition(all 0.2s ease-in);
+  				
+  				&:hover{
+  					background: #6e6d6e !important;
+  					text-decoration: none;
+  					@include box-shadow(none);
+            filter: none;
+
+  				}
+
+          &.btn-paste{
+              background: #f5ab7d;
+          }
+  			}
+
+        >.loader{
+          width: 40px;
+          height: 40px;
+          background: url(../img/350.gif) center center no-repeat;
+        }
+   		}
+
+        &.pasting {
+          .uploader-wrapper{
+            overflow: hidden;
+          }
+          .actions>a{
+            border: none;
+          }
+        }
+   		
+        .uploader-wrapper{
+            padding: 9px;
+            height: 260px;
+            position: relative;
+            z-index: 100;
+            overflow-y: auto;
+
+           .upload-button-wrapper{
+              overflow: hidden;
+              position: absolute;
+               left: 50%;
+               top: 50%;
+               text-align: center;
+               &.faded{
+                 visibility: hidden;
+               }
+
+               strong{
+                font-size: 16px;
+               }
+         			.btn-choose{
+         				margin-top: 10px;
+         				text-transform: none;
+         			}
+            }
+            &.active{
+                @include box-shadow(inset 0px 2px 5px #807e80);
+
+                .btn-choose{
+                    display: none;
+                }
+            }
+        
+            .uploaded-files-list{
+                margin-left: 0px;
+                padding-bottom: 9px;
+                li{
+                    list-style-type: none;
+                    position: relative;
+                    width: 100%;
+                    @include border-radius(2px);
+                    background: red;
+                    padding: 9px 0px 9px 0px;
+                    border: 1px solid #f2f2f2;
+                    @include gradient-vertical(#f7f7f7, #e8e8e8);
+                    @include box-shadow(0px 1px 1px #cccccc);
+                    margin-bottom: 9px;
+                    display: table;
+                    overflow: hidden;
+                    &:hover{
+                        @include gradient-vertical(darken(#f7f7f7,2%), darken(#e8e8e8, 2%));
+                    }
+                    
+                    .filename{
+                        display: table-cell;
+                        color: $xDarkGray;
+                        width: 400px;
+                        padding-left: 9px;
+                        text-shadow: 1px 1px 0px white;
+                        >.pasted{
+                            font-style:italic;
+                            color: #b2b2b2; 
+                        }
+                    }
+                    
+                    .tools{
+                        position: absolute;
+                        right: 9px;
+                        top: 50%;
+                        margin-top: -9px;
+                        width: 128px;
+                        
+                        >*{
+                            float: left;
+                        }
+                        
+                        >.progress{
+                            width: 100px;
+                            margin-top: 8px;
+
+                        }
+                        
+                        >.file-remove{
+                            margin-left: 5px;
+                        }
+
+
+
+                    }
+                }
+            }
+
+            #paste-from-clipboard{
+                textarea{
+                    width: 584px;
+                    height: 246px;
+                    margin: 0px;
+                    resize: none;
+                    border: 1px solid #b0b0b0;
+                    @include box-shadow(inset 0px 2px 2px #dddddd);
+                }
+            }
+       	}
+   	
+        .info-overlay{
+       		position: absolute;
+       		width: 100%;
+       		text-align: center;
+       		z-index: 50;
+       		top: 0px;
+       		left: 0px;
+       		h4{
+       			font-weight: normal;
+       		}
+       	}
+
+    }
+}
+
+.uploader-wrapper.active .info-overlay>strong{
+  display: none;
+}
+
+
+//jquery fileupload styles
+
+@charset 'UTF-8';
+/*
+ * jQuery File Upload UI Plugin CSS 6.3
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2010, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+  float: left;
+  margin-right: 4px;
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  border: solid transparent;
+  border-width: 0 0 100px 200px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -moz-transform: translate(-300px, 0) scale(4);
+  direction: ltr;
+  cursor: pointer;
+}
+.fileupload-buttonbar .btn,
+.fileupload-buttonbar .toggle {
+  margin-bottom: 5px;
+}
+.files .progress {
+  width: 200px;
+}
+.progress-animated .bar {
+//background: url(../img/progressbar.gif) !important;
+  filter: none;
+}
+.fileupload-loading {
+  position: absolute;
+  left: 50%;
+  width: 128px;
+  height: 128px;
+  background: url(../img/loading.gif) center no-repeat;
+  display: none;
+}
+.fileupload-processing .fileupload-loading {
+  display: block;
+}
+
+/* Fix for IE 7: */
+*+html .fileinput-button {
+  margin: 1px 0 0 0;
+}
+
+@media (max-width: 480px) {
+  .files .btn span {
+    display: none;
+  }
+  .files .preview * {
+    width: 40px;
+  }
+  .files .name * {
+    width: 80px;
+    display: inline-block;
+    word-wrap: break-word;
+  }
+  .files .progress {
+    width: 20px;
+  }
+  .files .delete {
+    width: 60px;
+  }
+}

@@ -1,0 +1,112 @@
+body.report-print-view{
+	
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #535353;
+	font-size: 12pt;
+
+	#main-header, #sub-header{
+		display: none;
+	}
+
+	.content{
+		width: 100%;
+		header{
+			border-bottom: 0.25mm solid #838383;
+			clear: both;
+			display: block;
+			
+			.title{
+				display: inline-block;
+				width: 60%;
+				h2{
+					color: #e33d4d;
+					font-weight: normal;
+					font-size: 16pt;
+					margin-bottom: 2mm;
+				}
+				h3{
+					font-size: 10pt;
+					font-weight: normal;
+					strong{
+						text-transform: uppercase;
+					}
+				}
+			}
+
+			.logo{
+				display: inline-block;
+				width: 30%;
+				float: right;	
+				text-align: right;
+				margin-top: 2mm;
+			}
+		}
+		.chart-section{
+			width: 100%;
+			margin-top: 10mm;
+			margin-bottom: 10mm;
+			padding-bottom: 10mm;
+			border-bottom: 0.25mm solid #838383;
+			display: block;
+			>div{
+				width: 100% !important;
+				text-align: center;
+				margin: 0 auto;
+			}
+		}
+		.table-section{
+			width: 100%;
+
+			table{
+				width: 100%;
+				font-size: 10pt;
+				border-spacing: 0;
+				border-collapse: collapse;
+	          td{
+	            border: 0.5mm solid #535353;
+	            padding: 1mm;
+	          }
+	          .xtrf-financial-report-header{
+	          	font-weight: bold;
+	          }
+	          .xtrf-financial-report-header-main td.xtrf-financial-report-header{
+	          	font-weight: bold;
+	          	text-align: center;
+	          	color: black;
+	          	text-transform: uppercase;
+	          	page-break-after: avoid;
+				page-break-inside: avoid;
+	          }
+	          .xtrf-financial-report-footer-main td{
+	          	border-top: 1mm solid #535353;
+	          	font-weight: bold;
+	          	color: 	black;
+
+	          	&.xtrf-financial-report-footer.table-footer-label{
+	          		text-align: right;
+	          		text-transform: uppercase;
+	          		font-weight: bold;
+
+	          	}
+	          }
+	        }
+		}
+
+		footer{
+			width: 100%;
+			display: inline-block;
+			font-size: 8pt;
+			margin-top: 10mm;
+			span{
+				display: inline-block;
+				width: 60%;
+			}
+			.logo{
+				width:30%;
+				float: right;
+				display: inline-block;
+				text-align: right;
+			}
+		}
+	}
+}

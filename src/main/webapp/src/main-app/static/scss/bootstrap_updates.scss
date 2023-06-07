@@ -1,0 +1,77 @@
+// Core variables and mixins
+@import "variables.scss"; 
+@import "mixins.scss";
+@import "branding-colors";
+
+// CSS Reset
+@import "reset.scss";
+
+// Grid system and page structure
+@import "scaffolding.scss";
+@import "grid.scss";
+@import "layouts.scss";
+
+    
+// // Base CSS 
+@import "type.scss";
+@import "forms.scss";
+@import "tables.scss";  
+    
+// // Components: common
+@import "sprites.scss";     
+@import "dropdowns.scss";
+
+@import "component-animations.scss";
+@import "close.scss";
+
+// // Components: Buttons & Alerts
+@import "buttons.scss";
+@import "button-groups.scss";
+@import "alerts.scss"; 
+
+// // Components: Nav
+@import "navs.scss";
+@import "navbar.scss";
+@import "pagination.scss";
+@import "pager.scss";
+
+// // Components: Popovers
+@import "modals.scss";
+@import "tooltip.scss";
+
+// // Components: Misc
+@import "labels-badges.scss";
+@import "progress-bars.scss";
+@import "accordion.scss";
+
+@import "responsive.scss";
+
+// // Utility classes
+@import "utilities.scss"; 
+
+// // Components: XTRF Partner Zone specific
+@import "xtrf_base.scss";
+@import "xtrf_modules.scss";
+@import "xtrf_quotes.scss";
+@import "xtrf_projects.scss";
+@import "xtrf_invoices.scss";
+@import "xtrf_reports.scss";
+@import "xtrf-topbar-new.scss";
+@import "xtrf_dashboard_new.scss";
+@import "xtrf_docs.scss";
+@import "xtrf_offices.scss";
+
+@import "xtrf_modals_qr.scss";
+@import "xtrf_modals_my_account_v2.scss";
+@import "xtrf_modals_qc.scss";
+@import "xtrf_modals_gt.scss";
+
+@import "xtrf_login.scss";
+@import "xtrf_popovers.scss";
+@import "xtrf_uploader.scss";
+@import "xtrf_select2.scss";
+@import "xtrf_dropdown_select2.scss";
+@import "xtrf_datepicker.scss";
+@import "xtrf_resources.scss";
+
+@import "xtrf-modals.scss";

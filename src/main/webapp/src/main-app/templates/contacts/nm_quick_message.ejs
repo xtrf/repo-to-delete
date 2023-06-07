@@ -1,0 +1,63 @@
+<div class="modal modal-iconic modal-contact" id="myModal">
+                <div class="modal-header">
+                    <h3 data-localize="modules.contact.quick-contact">Quick contact</h3>
+                    <div class="icon-wrapper">
+                    	<i class="icon icon-message"></i>
+                    </div>
+                    <button data-dismiss="modal" class="close" type="button"><i class="icon icon-modal-close"></i></button>
+                </div>
+
+                <div class="modal-body">
+                   <div class="content"> 
+                       <form class="form-horizontal form-quick-contact">
+                           <div class="control-group">
+                               <label data-localize="modules.contact.form.to" for="" class="control-label">To:</label>
+                               	
+                                   <div class="controls">
+                                   	 <div style="display:none;" id="contact-info-details" class="contact-info">
+                                      
+                                      <div class="profile-pic pull-left"><img onerror="setDefaultAvatar2(this)" src=""></div>
+                                      <div class="details">
+                                        <span class="name"></span>
+                                        <div class="job-title"></div>
+                                      </div>
+                                      <div style="" class="remove-contact-person">
+                                      <button style="" class="close" type="button"><i class="icon icon-file-remove"></i></button>
+                                      </div>
+                                    </div>
+                                   
+                                      <select id="select-contact" class="chosen-process" data-placeholder="Select contact person" data-localize-2="modules.contact.form.select-contact-person">
+                                           <option></option> <!-- intentionaly left blank for placeholder purpose!!! -->
+                                            <% for(var i=0; i< avContacts.length; i++){ %>
+                                    <option value="<%= avContacts[i].id %>" position="<%= avContacts[i].position %>"><%= avContacts[i].name %></option>
+                                    <% } %>
+                                       </select>
+                                   </div>
+                           </div>
+
+                           <div class="control-group">
+                               <label data-localize="modules.contact.form.subject" for="inputEmail" class="control-label">Subject:</label>
+                                   <div class="controls">
+                                       <input type="text" id="quick-message-subject">
+                                   </div>
+                           </div>
+
+                           <div class="control-group">
+                               <label data-localize="modules.contact.form.message" for="inputEmail" class="control-label">Message:</label>
+                                   <div class="controls">
+                                       <textarea id="quick-message-content" rows="5"></textarea>
+                                   </div>
+                           </div>
+                           <div class="control-group">
+                           	<div class="controls">
+                           		<button data-localize="general.send" id="send-quick-message" class="btn btn-ncta btn-large">Send</button>
+                           	</div>
+                           </div>
+
+                       </form>
+                      
+                   </div>
+                </div>
+
+                
+            </div>

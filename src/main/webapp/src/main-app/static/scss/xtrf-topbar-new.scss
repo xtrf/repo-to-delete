@@ -1,0 +1,804 @@
+.lt-ie9 .main-loader{
+	background: url(../img/l-bg.png);
+}
+
+.main-loader{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background: rgba(0,0,0,0.1);
+	z-index: 100;
+}
+#loader-new{
+	width: 50px;
+	height: 50px;
+	@include gradient-vertical(#474547, #424042);
+	margin-left:-25px;
+	margin-top: -25px;
+	@include box-shadow(0 0 10px darken(#aba7ad, 20%));
+	@include border-radius(2px);
+	border: 1px solid #424042;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	#canvasLoader{
+		margin-left: 10px;
+		margin-top: 10px;
+	}
+}
+
+#main-header{
+    margin: 0px 0px 0px 0px;
+  
+  	position: fixed;
+  	top: 0px;
+  	left: 0px;
+  	z-index: 100;
+  	width: 100%;
+    background-color: $customersNavBackground;
+  	@include box-shadow(0px 1px 0px #e7e7e7);
+    filter: none;
+  	padding-top: 0;
+    overflow: visible;
+
+  	.container{
+    
+      position: relative;
+      z-index: 100;
+  		max-width: 1660px;
+  		width: 100%;
+  		min-width: 960px;
+      padding-left: 30px;
+      padding-right: 30px;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+
+      .shadow{
+        position: absolute;
+        bottom:0px;
+        left: -100%;
+        height: 10px;
+        width: 300%;
+        background: transparent url(../img/shadow.png) bottom left repeat-x;
+        z-index: 101;
+      }
+      .shadow-top {
+        position: absolute;
+        z-index: 101;
+        top:0px;
+        left: -100%;
+        height: 5px;
+        width: 300%;
+        background: $customersNavButtons;
+        box-shadow: 0px 2px 5px -2px #000000;
+      }
+      .widget-add{
+        position: absolute;
+        display: none;
+        top: 100%;
+        right:30px;  
+        padding: 5px 9px;
+        @include gradient-vertical(#ffffff, #f0f0f0);
+        border: 1px solid #fff;
+        @include box-shadow(0px 1px 1px rgba(0,0,0,.3));
+        -webkit-border-bottom-left-radius: 4px;
+        -webkit-border-bottom-right-radius: 4px;
+        -moz-border-radius-bottomleft: 4px;
+        -moz-border-radius-bottomright: 4px;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        color: #4972ba;
+        text-shadow: 0px 1px 0px white;
+
+        &:hover{
+         text-decoration: none;
+
+
+        }
+
+        span{
+          display: inline-block;
+          padding: 0 10px;
+        }
+      }
+  	}
+  	
+  	>.mask{
+  		width: 100%;
+  		top: 72px;
+  		position: absolute;
+  		left:0px;
+  		height: 40px;
+  		background: transparent url(../img/top-mask.png) bottom left repeat-x;
+      z-index: -1;
+  	}
+  
+
+    .logo{
+        @extend .pull-left;
+	     	a{
+            display: block;
+            margin-top: 11px;
+	        img{
+	        	display: block;
+                max-width: 200px;
+                max-height: 50px;
+	  		}
+    	}
+
+
+    }
+
+    #primary-nav{
+    	float: left;
+    	margin-left: 40px;
+    	ul{
+    		list-style-type: none;
+    		margin-right: 0px;
+
+    		li{
+
+    			border-right: 1px solid rgba(97, 95, 88, .3);
+    			display: block;
+    			float: left;
+    			&:first-child{
+    				border-left: 1px solid rgba(97, 95, 88, .2);
+    			}
+    			a{
+    				padding: 0px;
+    				display: block;
+    				height: 72px;
+    				width: 70px;
+    				text-align: center;
+    				position: relative;
+    				text-transform: uppercase;
+    				color: #595759;
+    				text-shadow: 1px 1px 1px white;
+    				@include transition(background-color .25s ease-in);
+
+    				.icon{
+    					display: block;
+    					width: 24px;
+    					height: 24px;
+    					position: absolute;
+    					top: 50%;
+    					left: 50%;
+    					margin: -12px 0px 0px -12px;
+              @include transition(margin-top .1s ease-in);
+              
+              svg {
+                width:22px; 
+                height:26px;
+                vertical-align: bottom;
+              
+                .a, .b {
+                  stroke: $customersNavFont;
+                  fill: none;
+                }
+              }
+    				}
+
+            .tip{
+              margin-top: 75px;
+              position: absolute;
+              width: 200px;
+              text-align: center;
+              width: 200px;
+              margin-left: -65px;
+              font-weight: bold;
+              color: $customersNavFont;
+              text-shadow: 0px 1px 0px rgba(255,255,255,.5);
+              font-size: 11px;
+              display: none;
+            }
+
+    				&:hover{
+    					background-color: $customersNavBackground;
+              .tip{
+                display: block;
+                animation: tip-show .25s;
+                -webkit-animation: tip-show .25s; /* Safari and Chrome */
+                animation-timing-function:ease-in;
+                -webkit-animation-timing-function:ease-in;
+                color: $customersNavFont;
+              }
+    				}
+    			}
+
+    			&.active>a{
+            background-color: $customersNavButtons;
+            background-repeat: repeat-x;
+            color: #444244;
+
+            .icon svg {
+              .a, .b {
+                stroke: $customerComponentsFont;
+              }
+            }
+            
+            .tip{
+              color: $customersNavFont;
+            }
+
+            &:hover {
+              background-color: $customersNavButtonsHover;
+            }
+				}
+				&.disabled>a{
+					color: #c0c0c0;
+    				cursor: default;
+    				&:hover{
+    					background:none;
+              .icon{
+                margin-top: -12px;
+              }
+    				}
+				}
+				&:hover .icon{
+					margin-top:-16px;
+				}
+        
+			}
+    		>.indicator{
+		  		@include transition(left .08s ease-in);
+		  		width: 12px;
+		  		height: 5px;
+		  		background: transparent url(../img/icons.png) -90px -266px no-repeat;
+				position: absolute;
+				top:5px;
+				left:-9999999px;
+				z-index: 1;
+		  	}
+    	}
+    }
+
+    .tools{
+    	float: right;
+    	list-style-type: none;
+    	margin:0;
+    	padding: 0;
+    	li{
+    		float: left;
+    	}
+
+    	.separator{
+    		margin-left: 10px;
+    		margin-right: 10px;
+    		width: 1px;
+    		height: 34px;
+    		border-right: 1px solid  rgba(97, 95, 88, .2);
+    		background-color:  rgba(97, 95, 88, .2);
+    		margin-top: 19px;
+
+    	}
+
+      li>.icon-loader-request{
+        width: 16px;
+        height: 16px;
+        display: none;
+        background: url(../img/351.gif) center center no-repeat;
+        margin-top:-26px;
+      }
+    	.job-request{
+    		margin-top: 20px;
+    		padding: 0;
+    		position: relative;
+        background-color: $customerComponents;
+        background-repeat: repeat-x;
+    		@include border-radius(2px);
+    		height: 32px;
+        display: inline-block;
+
+
+    		.btn{
+    			height:32px;
+    			line-height: 32px;
+    			text-transform: uppercase;
+    			text-shadow: 1px 1px 1px rgba(0,0,0,.1);
+    			color: $customerComponentsFont;
+    			font-size: 11px;
+    			font-weight: bold;
+    			padding: 0px 26px;
+    			border: none;
+    			background: none;
+    			
+    			float: left;
+    			margin: 0px;
+    			background: none;
+    			background-image: none;
+          >.icon{
+            display: none;
+            margin-top: 2px;
+            &.icon-quotes{
+              background-position: -79px -112px;
+              width: 24px;
+              height: 26px;
+            }
+            &.icon-projects{
+              background-position: -103px -112px;
+              width: 26px;
+              height: 26px;
+            }
+          }
+    			&:first-child{
+    				border-right: none;
+    				-webkit-border-top-right-radius: 0px;
+					-webkit-border-bottom-right-radius: 0px;
+					-moz-border-radius-topright: 0px;
+					-moz-border-radius-bottomright: 0px;
+					border-top-right-radius: 0px;
+					border-bottom-right-radius: 0px;
+
+    			}
+    			&.rap{
+    				border-left: none;
+    				-webkit-border-top-left-radius: 0px;
+  					-webkit-border-bottom-left-radius: 0px;
+  					-moz-border-radius-topleft: 0px;
+  					-moz-border-radius-bottomleft: 0px;
+  					border-top-left-radius: 0px;
+  					border-bottom-left-radius: 0px;
+  					&:hover{
+  						@include box-shadow(3px 0px 5px rgba(0,0,0,.2));
+  					}
+    			}
+    			&.raq{
+    				&:hover{
+    					@include box-shadow(-3px 0px 5px rgba(0,0,0,.2));
+    				}
+    			}
+    			&:hover{
+    				background-color: $customerComponentsHover;
+            background-repeat: repeat-x;
+    			}
+
+          &.disabled:hover{
+            background-image: none;
+            background: none;
+            filter: none;
+            @include box-shadow(none);
+          }
+
+
+    		}
+    		.separator{
+    			
+    			height: 32px;
+    			
+    			border-right: none;
+    			background: none;
+    			display: inline-block;
+    			float: left;
+    			margin: 0px;
+    			padding: 0px;
+    			width: 2px;
+    			>i{
+    				margin-top: 5px;
+    				display: block;
+    				width:1px;
+    				height: 22px;
+    				background: $customerComponentsHover;
+    				border-right: 1px solid $customerComponents;
+    			}
+
+    		}
+      }
+      
+      svg {
+        width: 16px; 
+        height: 16px;
+      
+        .a, .b {
+          stroke: none;
+          fill: $customersNavFont;
+        }
+      }
+    }
+}
+
+
+#my-account{
+	margin-top: 10px;
+  padding: 5px 8px 5px 5px;
+	display: block;
+	line-height: 34px;
+  @include border-radius(2px);
+  .name{
+    display: inline-block;
+    line-height: 34px;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 0px 1px 0px white;
+  }
+	.profile-pic{
+		@include square(34px);
+		@include border-radius(4px);
+		
+		>img{
+			@include border-radius(4px);
+			display: block;
+			width: 100%;
+			max-width: 100%;
+		}
+	}
+  .caret{
+    opacity: 1;
+    background: transparent url(../img/icons.png) -90px -272px no-repeat;
+    width: 10px;
+    height: 5px;
+    border: none;
+    margin-top:14px;
+  }
+
+	&:hover{
+		text-decoration: none;
+    
+    
+    .caret{
+      background-position:  -90px -278px;
+    }
+  }
+
+
+  .icon-settings-new {
+    display: inline-block;
+  }
+
+}
+
+
+#contacts{
+  margin-top: 26px;
+  display: block;
+  
+  .icon{
+    width: 24px;
+    height: 24px;
+    padding: 10px;
+
+  }
+   &:hover .icon-contact{
+    background-position: -96px -48px;
+  }
+  &.disabled{
+    cursor: default;
+    .icon-contact, &:hover .icon-contact{
+      background-position: -96px -306px;
+    }
+  }
+  
+ 
+}
+
+
+#main-header .dropdown-menu{
+  border: none;
+  background: red;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  background-color: $customersNavBackground;
+  @include border-radius(4px);
+  @include box-shadow(0px 0px 10px rgba(0,0,0,.35));
+  z-index: 200;
+  filter: none;
+  > :first-child{
+    border-top: none;
+  }
+
+}
+
+#my-account-menu{
+  width: 290px;
+  nav{
+    overflow: hidden;
+  }
+ nav  a{
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      display: block;
+      width: 100%;
+      border-bottom: 1px solid  rgba(97, 95, 88, .2);
+      line-height: 13px;
+      @include transition(background .15s ease-in);
+      padding: 12px 9px 12px 52px;
+      position: relative;
+      >.icon{
+        @include square(24px);
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        margin-top: -12px;
+
+
+      &.icon-settings{
+        background-position: 0px -767px;
+      }
+       &.icon-resources{
+        background-position: -24px -767px;
+      }
+       &.icon-tour{
+        background-position: -48px -767px;
+      }
+    }
+    >span{
+      font-size: 14px;
+      font-weight: bold;
+      color: $customersNavFont;
+      white-space: pre-wrap;
+    }
+
+    >small{
+      font-size: 10px;
+      color: $customersNavFont;
+      font-weight: normal;
+      white-space: pre-wrap;
+    }
+
+    &:hover{
+      text-decoration: none;
+      background: rgba(0,0,0,.05);
+    }
+
+    
+  }
+  .logout{
+      border: none;
+      @include box-shadow(none);
+      text-align: right;
+      display: inline-block;
+      float: right;
+      margin: 8px 9px 6px 0px;
+      padding:0px;
+      padding-left: 30px;
+      position: relative;
+      font-size: 12px;
+      color: $customersNavFont;
+      >.icon{
+        position: absolute;
+        left: 4px;
+        top: 50%;
+        margin-top: -6px;
+        
+      }
+
+      &:hover{
+        text-decoration: none;
+        .icon{
+          animation: logout .25s;
+          -webkit-animation: logout .25s; /* Safari and Chrome */
+          animation-timing-function:ease-in;
+        -webkit-animation-timing-function:ease-in;
+        }
+      }
+    }
+}
+
+#contacts-list{
+  width:  350px;
+  height: 276px;
+  padding:9px 5px 0px 9px;
+  overflow: hidden;
+  
+  .bottom-mask{
+    width: 100%;
+    height: 32px;
+    background: transparent url(../img/bottom-shadow-white.png) 0 0 repeat-x;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+  }
+  .jspScrollable+.bottom-mask{
+    width: 334px;
+  }
+
+  .wrapper{
+    height: 265px;
+    padding-bottom: 10px;
+
+    h1{
+      font-size: 12px;
+      color: $customersNavFont;
+      padding-bottom: 6px;
+      line-height: 18px;
+      border-bottom: 1px dashed $customersNavFont;
+      margin-bottom: 8px;
+      line-height: 14px;
+    }
+    .contact-info{
+      padding-right: 40px;
+      position: relative;
+      margin-bottom: 9px;
+      display: table;
+      width: 100%;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+    }
+    .contact-info .profile-pic{
+      @include square(53px);
+      display: table-cell;
+      vertical-align: middle;
+      float: none;
+    }
+    .contact-info .profile-pic a{
+      padding: 0;
+    }
+    .contact-info .details{
+
+      display: table-cell;
+      vertical-align: middle;
+      float: none;
+      padding: 0 0 0 12px;
+      margin: 0;
+      .name{
+        padding: 0px 0px 0px 0px;
+        white-space: normal;
+        color: $customersNavFont;
+      }
+      .job-title {
+        color: $customersNavFont;
+      }
+    }
+
+    .contact-info .quick-message{
+        position: absolute;
+        right: 0px;
+        top: 50%;
+        @include square(30px);
+        padding: 0;
+        margin: 0;
+        margin-top: -15px;
+
+        background-image: none;
+        background-color: $customerComponents;
+        border: 1px solid $customerComponents;
+        &:hover {
+          background-image: none;
+        }
+
+        .icon-quick-message{
+            background: none;
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -12px;
+            margin-top: -9px;
+            @include transition(margin-top .06s ease-in);
+        }
+
+        &:hover .icon-quick-message{
+          margin-top: -15px;
+        }
+        &.disabled{
+          background-color:rgba(97, 95, 88, .2);
+          border-color:rgba(97, 95, 88, .2);
+          opacity: 1;
+          &:hover{
+            @include box-shadow(none);
+          } 
+          &:hover .icon-quick-message{
+            margin-top: -12px;
+          }
+        }
+
+      } 
+
+      .jspVerticalBar{
+        width:8px;
+        opacity: 1;
+
+      }
+      .jspTrack{
+        @include border-radius(8px);
+        background: none;
+        padding-bottom: 9px;
+         box-sizing: border-box;
+       -moz-box-sizing: border-box; 
+       height: 200px !important;
+      }
+      .jspDrag{
+        @include border-radius(8px);
+        @include gradient-vertical(#b2afb2,#9a979a);
+        @include box-shadow(inset 0px 1px 0px rgba(0,0,0,.3));
+        background: #9d9a9d;
+        background-image: none;
+      }
+  }
+
+  
+}
+
+/*Logout icon animation */
+@keyframes logout{
+  0%{
+    left:0px;
+  }
+  50%{
+    left: 6px;
+  }
+  100%{
+    left: 0px;
+  }
+}
+
+@-webkit-keyframes logout{
+ 0%{
+    left:4px;
+  }
+  20%{
+    left:0px;
+  }
+  50%{
+    left: 10px;
+  }
+  100%{
+    left: 4px;
+  }
+}
+
+@keyframes tip-show{
+  0%{
+    display: block;
+    opacity:0;
+    margin-top:70px;
+  }
+  100%{
+    opacity: 1;
+    margin-top: 75px;
+  }
+}
+
+@-webkit-keyframes tip-show{
+  0%{
+    display: block;
+    opacity:0;
+    margin-top:70px;
+  }
+  100%{
+    opacity: 1;
+    margin-top: 75px;
+  }
+}
+/* //Logout icon animation */
+
+
+@media screen and (max-width: 1200px){
+
+  #main-header #primary-nav ul li > a{
+    width: 60px;
+  }
+  #main-header .tools .job-request .btn{
+    padding: 0px 13px;
+
+    
+  }
+
+  #main-header .tools .separator{
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+}
+
+@media screen and (max-width: 960px){
+  #main-header .tools .job-request .btn span{
+      display: none;
+  }
+  #main-header .tools .job-request .btn .icon{
+    display: block;
+
+    svg {
+      vertical-align: sub;
+      width: 16px;
+      height: 16px;
+      .a {
+        stroke: $customerComponentsFont;
+        fill: none;
+      }
+    }
+  }
+}
+

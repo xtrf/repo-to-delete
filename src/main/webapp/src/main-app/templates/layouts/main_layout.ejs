@@ -1,0 +1,255 @@
+<header id="main-header" class="navbar" layout="main-layout">
+	<div class="container">
+		<div class="logo">
+			<a href="#!"><img src="<%= baseURL+"system/partnerZoneLogo?width=200&height=50&crop=true&v="+brandingChanged%>"
+				onerror="setDefaultLogo(this)" /></a>
+		</div>
+		<nav id="primary-nav">
+			<ul class="nav">
+				<li class="dashboard">
+					<a href="#!">
+						<span class="icon">
+							<%== $.View("templates/layouts/icons/dashboard_icon.ejs",{}) %>
+						</span>
+						<span class="tip" data-localize="modules.dashboard.header">Dashboard</span>
+					</a>
+				</li>
+
+				<li class="quotes">
+					<a href="#!quotes/active/1">
+						<span class="icon">
+							<%== $.View("templates/layouts/icons/quote_icon.ejs",{}) %> 
+						</span>
+						<span class="tip" data-localize="modules.quotes.header">Quotes</span>
+					</a>
+				</li>
+
+				<li class="projects">
+					<a href="#!projects/active/1">
+						<span class="icon">
+							<%== $.View("templates/layouts/icons/project_icon.ejs",{}) %>  
+						</span>
+						<span class="tip" data-localize="modules.projects.header">Projects</span>
+					</a>
+				</li>
+				<% if(permissions.hasAccessToInvoices()){ %>
+				<li class="invoices">
+					<a href="#!invoices/active/1">
+						<span class="icon">
+							  <%== $.View("templates/layouts/icons/invoice_icon.ejs",{}) %>
+						</span>
+						<span class="tip" data-localize="modules.invoices.header">Invoices</span>
+					</a>
+				</li>
+				<% } %>
+				<li class="reports">
+					<a href="#!reports/1">
+						<span class="icon">
+							<%== $.View("templates/layouts/icons/report_icon.ejs",{}) %>
+						</span>
+						<span class="tip" data-localize="modules.reports.header">Reports</span>
+					</a>
+				</li>
+				<div class="indicator"></div>
+			</ul>
+		</nav>
+
+		<ul class="tools">
+			<% if(permissionsTable['request_quote']==1){ %>
+			<li>
+				<i class="icon-loader-request"></i>
+
+				<div class="job-request">
+
+					<a class="btn right quote-request raq" id="quote-request" href="javascript:void(0);">
+						<i class="icon">
+							<%== $.View("templates/layouts/icons/quote_add_icon.ejs",{}) %>
+						</i> <span data-localize="general.raq">Request a quote</span></a>
+
+					<div class="separator"><i></i></div>
+					<a class="btn right project-request rap" id="project-request" href="javascript:void(0);">
+						<i class="icon">
+							<%== $.View("templates/layouts/icons/project_add_icon.ejs",{}) %>
+						</i><span data-localize="general.rap">Request a project</span></a>
+
+				</div>
+			</li>
+			<% } %>
+
+			<li class="separator"></li>
+			<li class="dropdown">
+				<a id="my-account" class="dropdown-toggle" data-toggle="dropdown">
+					<i class="icon-loader-green"></i>
+
+					<% if(accountUserType=="Customer") { %>
+						<div class="icon icon-settings-new">
+							<%== $.View("templates/layouts/icons/settings_icon.ejs",{}) %>
+						</div>
+					<% } %>
+					<% if(accountUserType!="Customer") { %>
+					<div class="profile-pic">
+						<img src="<%= customerAvatar %>" onerror="setDefaultMainAvatar(this)"/>
+
+					</div>
+					<% } %>
+				</a>
+
+				<div id="my-account-menu" class="dropdown-menu right-aligned">
+					<nav>
+						<a class="account-edit" tab="settings">
+							<i class="icon">
+								<%== $.View("templates/layouts/icons/settings2_icon.ejs",{}) %>
+							</i>
+							<span data-localize="modules.my-account.header">My account</span><br>
+							<small data-localize="modules.my-account.dropdown.manage">Manage your account</small>
+						</a>
+						<% if(permissionsTable['resources_browse'] == 1 && sessionObject.showResources !== false){ %>
+						<a href="#!resources">
+							<i class="icon">
+								<%== $.View("templates/layouts/icons/list_icon.ejs",{}) %>
+							</i>
+							<span data-localize="general.resources">Resources</span><br>
+							<small data-localize="modules.my-account.dropdown.resources-desc">View your TM's, TB's etc</small>
+						</a>
+						<% } %>
+						<a id="display-tour">
+							<i class="icon">
+								<%== $.View("templates/layouts/icons/question_mark.ejs",{}) %>
+							</i>
+							<span data-localize="modules.my-account.dropdown.tour">Customer Portal Tour</span><br>
+							<small data-localize="modules.my-account.dropdown.tour-desc">Display guided tour</small>
+						</a>
+					</nav>
+
+					<a id="logout-link" href="javascript:void(0);" class="logout">
+						<i class="icon">
+							<%== $.View("templates/layouts/icons/log_out_icon.ejs",{}) %>
+						</i> <span data-localize="modules.my-account.logout">Logout</span>
+					</a>
+				</div>
+			</li>
+
+			<li class="separator"></li>
+
+			<li class="dropdown">
+				<a id="contacts" class="dropdown-toggle <% if(salesData==null) { %>disabled<% } %>" data-toggle="dropdown"
+							rel="tooltip" data-original-title="Contact" data-localize-2="modules.dashboard.contact">
+							<i class="icon">
+								<%== $.View("templates/layouts/icons/contact_icon.ejs",{}) %>
+							</i>
+				</a>
+				<% if(salesData!=null) { %>
+				<div id="contacts-list" class="dropdown-menu right-aligned">
+					<div class="wrapper">
+
+
+						<h1 data-localize="modules.contact.account-responsible">Your account responsible</h1>
+
+						<div class="contact-info">
+
+							<div class="profile-pic pull-left"><a class="contact-details" user="<%= salesData.salesPerson.id %>"><img
+								style="width:53px;" src="<%= salesData.salesPerson.avatar %>" onerror="setDefaultMainAvatar(this)"></a></div>
+							<div class="details">
+								<a class="name contact-details" user="<%= salesData.salesPerson.id %>"><%= salesData.salesPerson.name %></a>
+
+								<div class="job-title"><%= salesData.salesPerson.position %></div>
+								<div class="actions">
+									<a class="btn btn-mini quick-message" user="<%= salesData.salesPerson.id %>">
+										<i class="icon">
+											<%== $.View("templates/layouts/icons/contact_icon.ejs",{}) %>
+										</i>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<h1 data-localize="modules.contact.pm-responsible">Your project manager responsible</h1>
+
+						<div
+							class="contact-info <% if(salesData.additionalResponsibles==null || salesData.additionalResponsibles.length==0) { %> last<% } %> ">
+
+							<div class="profile-pic pull-left"><a class="contact-details" user="<%= salesData.pmResponsible.id %>"><img
+								style="width:53px;" src="<%= salesData.pmResponsible.avatar %>" onerror="setDefaultMainAvatar(this)"></a></div>
+							<div class="details">
+
+								<a class="name contact-details" user="<%= salesData.pmResponsible.id %>"><%= salesData.pmResponsible.name %></a>
+
+								<div class="job-title"><%= salesData.pmResponsible.position %></div>
+
+								<div class="actions">
+									<a class="btn btn-mini quick-message" user="<%= salesData.pmResponsible.id %>">
+										<i class="icon">
+											<%== $.View("templates/layouts/icons/contact_icon.ejs",{}) %>
+										</i> 
+									</a>
+								</div>
+							</div>
+						</div>
+
+
+						<% if(salesData.additionalResponsibles!=null && salesData.additionalResponsibles.length>0) { %>
+						<h1 data-localize="modules.contact.additional-responsible">Additional Responsible</h1>
+
+
+						<% for(var i=0; i< salesData.additionalResponsibles.length; i++){ %>
+
+
+						<div
+							class="contact-info <% if(salesData.additionalResponsibles==null || salesData.additionalResponsibles.length==0) { %> last<% } %> ">
+
+							<div class="profile-pic pull-left"><a class="contact-details"
+																																													user="<%= salesData.additionalResponsibles[i].id %>"><img
+								style="width:53px;" src="<%= salesData.additionalResponsibles[i].avatar %>"
+								onerror="setDefaultMainAvatar(this)"></a></div>
+							<div class="details">
+								<a class="name contact-details" user="<%= salesData.additionalResponsibles[i].id %>"><%=
+									salesData.additionalResponsibles[i].name %></a>
+
+								<div class="job-title"><%= salesData.additionalResponsibles[i].position %></div>
+								<div class="actions">
+									<a class="btn btn-mini quick-message" user="<%= salesData.additionalResponsibles[i].id %>">
+										<i class="icon">
+											<%== $.View("templates/layouts/icons/contact_icon.ejs",{}) %>
+										</i> 
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<% } %>
+
+						<% } %>
+
+
+					</div>
+					<div class="bottom-mask"></div>
+				</div>
+				<% } %>
+			</li>
+
+
+		</ul>
+		<div class="shadow"></div>
+		<div class="shadow-top"></div>
+
+	</div>
+
+
+	<div class="mask"></div>
+
+</header>
+
+
+<div class="container" id="main-container"></div>
+
+<footer id="main-footer" class="">
+
+	Powered by <a href="https://www.xtrf.eu/?utm_source=xtrf_portal&utm_medium=xtrf_portal_link&utm_campaign=client_portal" class="xtrf-logo" target="_blank"></a>
+
+</footer>
+<div class="main-loader" style="height: 830px; display:none;">
+	<div id="loader-new">
+
+
+	</div>
+</div>

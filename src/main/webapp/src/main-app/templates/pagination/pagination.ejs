@@ -1,0 +1,67 @@
+  <ul>
+                                  <% if(1==this.currentPage){ %>	
+                                  <li class="disabled"><a pageNumber="<%= this.currentPage-1 %>">&laquo; <span data-localize="general.previous">Previous</span></a></li>
+                                  <% }else{ %>
+                                  <li><a pageNumber="<%= this.currentPage-1 %>" href="<%= this.urlAddress.replace(":page",this.currentPage-1) %>">&laquo; <span data-localize="general.previous">Previous</span></a></li>
+                                  <% } %>
+                                  
+                                  <% if(this.numberOfPages<7) { %>
+                                  
+	                                  <% for(var i = 1; i <= this.numberOfPages; i++){ %>
+	                                  <% if(i==this.currentPage){ %>
+	                                  	<li class="active"><a pageNumber="<%= i %>" href="<%= this.urlAddress.replace(":page",i) %>"><%= i %></a></li>
+	                                  <% }else{ %>
+	                                  <li><a pageNumber="<%= i %>" href="<%= this.urlAddress.replace(":page",i) %>"><%= i %></a></li>
+	                                  <% } %>
+	                                  <% } %>
+                                  
+                                  
+								  <% }else{ %>
+								  	  <% if(Math.abs(1-this.currentPage)>=3) { %>
+								  	  <li><a pageNumber="<%= 1 %>" href="<%= this.urlAddress.replace(":page",1) %>"><%= 1 %></a></li>
+								  	  		
+								  	  		 
+								  	  <% } %>	
+								  	 
+								  
+								  
+								  	  <% if(Math.abs(1-this.currentPage)>3) { %>
+								  	  
+								  	  		<li><a class="more">...</a></li>
+								  	  		 
+								  	  <% } %>	
+								  	 
+								  
+								  	  <% for(var i = 1; i <= this.numberOfPages; i++){ %>
+								  	  <% if(Math.abs(i-this.currentPage)<3) { %>
+		                                  <% if(i==this.currentPage){ %>
+		                                  	<li class="active"><a pageNumber="<%= i %>" href="<%= this.urlAddress.replace(":page",i) %>"><%= i %></a></li>
+		                                  <% }else{ %>
+		                                  <li><a pageNumber="<%= i %>" href="<%= this.urlAddress.replace(":page",i) %>"><%= i %></a></li>
+		                                  <% } %>
+	                                  <% } %>
+	                                  
+	                                  <% } %>	
+	                                  
+	                                    <% if(Math.abs(this.numberOfPages-this.currentPage)>3) { %>
+								  	  		<li><a  class="more">...</a></li>
+								  	  		
+								  	  <% } %>
+	                                  
+	                                   <% if(Math.abs(this.numberOfPages-this.currentPage)>=3) { %>
+								  	  		
+								  	  		 <li><a pageNumber="<%= this.numberOfPages %>" href="<%= this.urlAddress.replace(":page",this.numberOfPages) %>"><%= this.numberOfPages %></a></li>
+								  	  <% } %>	
+	                                  
+								  
+								  <% } %>
+
+                                  
+                                   <% if(this.numberOfPages==this.currentPage){ %>	
+                                  <li class="disabled"><a pageNumber="<%= this.currentPage-(-1) %>"><span data-localize="general.next">Next</span> &raquo;</a></li>
+                                  <% }else{ %>
+                                  <li><a pageNumber="<%= this.currentPage-(-1) %>" href="<%= this.urlAddress.replace(":page",(this.currentPage-(-1))) %>"><span data-localize="general.next">Next</span> &raquo;</a></li>
+                                  <% } %>
+                                  
+                               
+                                </ul>

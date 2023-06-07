@@ -1,0 +1,23 @@
+<div class="empty-set-placeholder row">
+	<div class="<% if(permissionsTable['request_quote']==1){ %> span8 <% } else { %> span12 <% } %> active-counter">
+		<div class="counter">
+			<% if(tab=="active") { %>
+			<span data-localize="general.you-have-0-active-quotes">You have {0} active quotes</span>
+			<% } else{ %>
+			<span data-localize="general.you-have-0-archived-quotes">You have {0} archived quotes</span>
+			<% } %>
+
+		</div>
+
+	</div>
+	<% if(permissionsTable['request_quote']==1){ %>
+	<div class="span4 actions">
+		<a class="btn btn-ncta btn-quote-request btn-large raq  <% if(permissionsTable['request_quote']==0){ %> disabled <% } %>">
+			<i class="icon-qr-svg">
+				<%== $.View("templates/layouts/icons/plus_icon.ejs",{}) %>
+			</i>
+			<span data-localize="general.raq">Request a quote</span>
+		</a>
+	</div>
+	<% } %>
+</div>

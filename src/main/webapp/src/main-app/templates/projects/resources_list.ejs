@@ -1,0 +1,24 @@
+<section class="file-list">
+  <div class="files-accordion">
+    <div class="files-group" id="resources">
+      <header ><span data-localize="general.resources">Resource files</span>
+      
+      <span class="tools search">
+         <!--  <input type="text" class="filter-files" placeholder="Search files" data-localize-2="general.search-files" data-localize="general.search-files" /> -->
+
+          <% if(typeof showExpandInput == 'undefined' || showExpandInput==true) { %> 
+          <button class="btn btn-mini expand-files" expand-target="resources" ><span data-localize="general.expand-all">Expand all</span></button>
+          <% } %>
+
+        </span>
+      
+      </header>
+      <div class="resources-container">
+        <div class="file-browser">
+          <ul class="level0">
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

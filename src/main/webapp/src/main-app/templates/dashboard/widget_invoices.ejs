@@ -1,0 +1,72 @@
+<div data-status="active" class="module module-widget-new module-invoices">
+                <header>
+                  <span><a <% if(permissionsTable['invoices_browse']==1){ %> href="#!invoices/active/1"  <% } %> data-localize="<%= localizeHeader %>">Invoices</a></span>
+                  <span class="tools">
+                    <% if(dashboards.options.IE8==false){ %> <a class="widget-detach"><i class="icon-widget-detach"><%== $.View("templates/layouts/icons/x_icon.ejs",{}) %></i></a> <% } %>
+                  </span>
+                </header>
+                <section class="content">
+                <ul class="entity-list invoices   ">
+
+                <% $.each(invoices,function(index,invoice){ %>
+
+                  <li <% if(invoice.overdue==true) { %> class="invoice-overdue" <% }else{ %> class="invoice-av" <% } %>>
+
+                    <span class="confirmation-download">
+                      <span>
+                        <% if(invoice.finalNumber==null){ %>
+                          <% if(invoice.creditNoteNumber==null){ %>
+                          <%= invoice.draftNumber %>
+                          <% } else { %>
+                          <%= invoice.creditNoteNumber %>
+                          <% } %>
+                        <% } else { %>
+                        <%= invoice.finalNumber %>
+                        <% } %>
+                      </span>
+                      <div class="tools">
+                        <% if(invoice.documents!=null && invoice.documents.length>0) { %>
+                        <% $.each(invoice.documents, function(i, document){ %>
+                        <div class="document"><i class="icon-download-pdf"></i>
+                          <% if(pdf_info.acrobat!=null) { %>
+                            <% if(permissionsTable['invoice_download']==1){ %>
+                              <span data-localize="modules.invoices.invoice">Invoice</span>
+                              <a href="<%= baseURL %>invoices/<%= invoice.id %>/documents/<%= document.id %>?inline=true" target="_blank" data-localize="general.view">View</a> | <a href="<%= baseURL %>invoices/<%= invoice.id %>/documents/<%= document.id %>" data-localize="general.download">Download</a>
+                            <% } %>
+                          <% } else{ %>
+                             <% if(permissionsTable['invoice_download']==1){ %>
+                               <a href="<%= baseURL %>invoices/<%= invoice.id %>/documents/<%= document.id %>" data-localize="modules.invoices.invoice">Invoice</a>
+                            <% } %>
+                          <% } %>
+                          </div>
+
+                        <% }); %>
+                        <% }else{ %>
+                        <div class="document"><i class="icon-download-pdf"></i>
+                          <% if(pdf_info.acrobat!=null) { %>
+                            <% if(permissionsTable['invoice_download']==1){ %>
+                              <span data-localize="modules.invoices.invoice">Invoice</span>
+                              <a href="<%= baseURL %>invoices/<%= invoice.id %>/document?inline=true" target="_blank" data-localize="general.view">View</a> | <a href="<%= baseURL %>invoices/<%= invoice.id %>/document" data-localize="general.download">Download</a>
+                            <% } %>
+                          <% } else{ %>
+                             <% if(permissionsTable['invoice_download']==1){ %>
+                               <a href="<%= baseURL %>invoices/<%= invoice.id %>/document" data-localize="modules.invoices.invoice">Invoice</a>
+                            <% } %>
+                          <% } %>
+                          </div>
+                        <% } %>
+                      </div>
+
+                      </span>
+                       <span class="info">
+                      <small data-localize="general.due">due</small> <small><%= invoice.charges[0].dueDate.formatted %></small>
+                      <big><%= invoice.formattedTotalBrutto %></big>
+                    </span>
+                  </li>
+
+                  <% }) %>
+
+
+                </ul>
+                </section>
+              </div>

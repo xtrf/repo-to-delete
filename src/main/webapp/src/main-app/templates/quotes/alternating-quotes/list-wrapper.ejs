@@ -1,0 +1,31 @@
+<section class="module section-header quotes-header" id="quotes-header">
+	<header>
+		<h2 data-localize="modules.quotes.header">Quotes</h2>
+		<span class="tools">
+			<form class="search" id="search-quotes">
+				<div class="search-input-wrapper">
+					<input type="text" placeholder="Created on" name="createdOn" class="datepicker" data-localize-2="general.created-on-filter">
+					<i class="close clear-datepicker" data-target="createdOn"></i>
+				</div>
+				<div class="search-input-wrapper">
+					<input type="text" placeholder="Expiration Date" name="expirationDate" class="datepicker" data-localize-2="general.expiration-date">
+					<i class="close clear-datepicker" data-target="expirationDate"></i>
+				</div>
+				<div class="search-input-wrapper">
+					<input type="text" placeholder="Search by id, name, ref number" data-localize-2="general.search-by-id-name-ref" name="id-and-name" class="search">
+					<i class="close" id="clear-search"></i>
+				</div>
+				<button type="submit" class="btn right" data-localize="general.search-on-button">Search</button>
+			</form>
+			<div data-toggle="buttons-radio" class="btn-group view-switch">
+				<a id="tab-active" class="btn left" tab="active" data-localize="general.active">Current</a>
+				<a id="tab-history" class="btn right" tab="history" data-localize="general.history">Past</a>
+			</div>
+		</span>
+	</header>
+</section>
+<section class="content quotes-list">
+	<div class="pagination pagination-centered">
+
+	</div>
+</section>

@@ -1,0 +1,44 @@
+                
+                <div class="modal modal-quick-contact modal-outer" id="myModal">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">× <span data-localize="general.close">Close</span></button>
+                    <h3 data-localize="contact.quick-contact" data-localize="modules.contact.quick-contact">Quick contact</h3>
+                </div>
+
+                <div class="modal-body">
+                   <div class="content">
+                       <form class="form-horizontal form-quick-contact">
+                           <div class="control-group">
+                               <label class="control-label" for="inputEmail" data-localize="modules.contact.form.subject">Subject:</label>
+                                   <div class="controls">
+                                       <input type="text" id="quick-message-subject" />
+                                   </div>
+                           </div>
+
+                           <div class="control-group">
+                               <label class="control-label" for="inputEmail" data-localize="modules.contact.form.message">Message:</label>
+                                   <div class="controls">
+                                       <textarea rows="5" id="quick-message-content"></textarea>
+                                   </div>
+                           </div>
+                            <div class="control-group" style="display:none;"> 
+                               <label class="control-label" for="inputEmail"></label>
+                                   <div class="controls">
+                                       <textarea rows="5" id="login"></textarea>
+                                   </div>
+                           </div>
+
+                       </form>
+                      
+                   </div>
+                </div>
+
+                <!-- Notice the structure of links that will be common for all modals -->
+                <div class="modal-footer">
+                	
+                    <button class="btn btn-large modal-close" id="cancel-quick-message" data-localize="general.cancel">Cancel</button>
+                    <button class="btn btn-next btn-large" id="send-quick-message" data-localize="general.send">Send</button>
+                </div>
+                
+            </div>

@@ -1,0 +1,20 @@
+<div data-status="" class="module module-widget-new module-invoices module-stats">
+                <header>
+                  <span><a <% if(permissionsTable['invoices_browse']==1){ %> href="#!invoices/active/1"  <% } %> data-localize="<%= localizeHeader %>" >payment statistics</a></span>
+                  <span class="tools">
+                    <% if(dashboards.options.IE8==false){ %> <a class="widget-detach"><i class="icon-widget-detach"><%== $.View("templates/layouts/icons/x_icon.ejs",{}) %></i></a> <% } %>
+                  </span>
+                </header>
+                <section class="content">
+                      <div class="stat-counter overdue-invoices"  >
+                       <span data-localize="modules.dashboard.x-overdue-invoices">
+                        {0} overdue invoices</span>
+               
+                      </div>
+                      <div class="stat-counter available-invoices" >
+                        <span data-localize="modules.dashboard.x-invoices-available">
+                        {0} invoices available</span>
+                      
+                      </div>
+                </section>
+              </div>

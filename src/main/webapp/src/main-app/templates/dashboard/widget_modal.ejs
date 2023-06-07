@@ -1,0 +1,271 @@
+<div class="modal modal-widget-select row-fluid" id="widget-modal-2">
+			<div class="modal-header span12">
+				<header>
+					<span data-localize="modules.dashboard.add-widget">Add widget</span>
+					<a class="btn-close" data-dismiss="modal"></a>
+				</header>
+				<div class="filters">
+					<ul>
+						<% 
+						var numOfWidgets={};
+						$.each(dashboards.options.widgetGroups,function(groupIndex,groupInfo){
+							if(!numOfWidgets[groupIndex])
+								numOfWidgets[groupIndex]=0;
+							
+							
+							$.each(groupInfo,function(widgetIndex,widgetInfo){
+								if(max_size==0 || max_size >= widgetInfo.sizex)
+									numOfWidgets[groupIndex]++;
+							})
+
+
+													
+						})		%>
+						 
+						
+						<% var installedWidgets={}; %>
+			    		<% $.each(dashboards.options.availableWidgets,function(index,value){ %>
+			    			<% if(value.installed==1) installedWidgets[index]=value; %>
+			    		<% }) %>
+						
+						<li class="active" data-link="all">
+							<a><span data-localize="modules.dashboard.modal.all">all</span><small> (<%= Object.keys(dashboards.options.availableWidgets).length %>)</small></a>
+						</li>
+					
+						<% $.each(dashboards.options.widgetGroups,function(groupIndex,groupInfo){ %>
+						
+						<li data-link="<%= groupIndex %>" <% if(numOfWidgets[groupIndex]==0) { %> class="disabled" <% } %>>
+							<a><span data-localize="modules.dashboard.modal.<%= groupIndex %>"><%= groupIndex %></span> <small>(<%= numOfWidgets[groupIndex] %>)</small></a>
+						</li>
+						<% }) %>
+						<li data-link="installed">
+							<a><span data-localize="modules.dashboard.modal.installed">installed</span><small> (<%= Object.keys(installedWidgets).length %>)</small></a>
+						</li>
+						<li class="search">
+							<input type="text" placeholder="Search widgets" id="search-widgets" />
+						</li>
+									 
+					</ul>
+				</div>
+			</div>
+			
+			
+			
+			
+			
+			<div class="modal-body span12" data-tab="all">
+	
+	    		<ul class="widget-wrapper">
+	    		
+	    			<% var z=0; %>
+	    			<% $.each(dashboards.options.availableWidgets,function(index,value){ %>
+						<% z++; %>
+	    				<% if((max_size==0 || max_size >= value.sizex) && (z%2==1) && index!="report-first"){ %>
+	    			
+    					<li class="widget" data-widget="<%= index %>" data-params="<%= value.params %>">
+	    					<h2 data-localize="<%= value.localize %>"><%= value.name %></h2>
+	    					<p class="description"></p>
+	    					<p class="description"><span data-localize="modules.dashboard.modal.size">Size</span>: <%= value.sizex %></p>
+	    					<div class="tools">
+	    					<% if(permissionsTable[value.rights]==0) { %>
+	    						<a class="btn btn-mini btn-ncta install-widget disabled" data-localize="modules.dashboard.modal.no-rights">No rights</a>
+	    					<% }else if(value.installed==1) { %>
+	    						<span class="status"><i class="icon-installed"></i> <span data-localize="modules.dashboard.modal.installed">Installed</span></span>
+	    					<% } else { %>
+	    						<a class="btn btn-mini btn-ncta install-widget" data-pre-row="<%= widgetRow %>" data-pre-col="<%= widgetCol %>" data-localize="modules.dashboard.modal.install">Install</a>
+	    					<% } %>
+	    					</div>
+	    				</li>
+	    				<% } %>
+    				<%	}); %>
+	    		
+	    		
+	    			
+
+	    		
+	    			
+	    		</ul>
+	    		
+	    		<% var z=0; %>
+	    		<ul class="widget-wrapper">
+	    			<% $.each(dashboards.options.availableWidgets,function(index,value){ %>
+						<% z++; %>
+	    				<% if((max_size==0 || max_size >= value.sizex) && (z%2==0) && index!="report-first"){ %>
+	    			
+    					<li class="widget" data-widget="<%= index %>" data-params="<%= value.params %>">
+	    					<h2 data-localize="<%= value.localize %>"><%= value.name %></h2>
+	    					<p class="description"></p>
+	    					<p class="description"><span data-localize="modules.dashboard.modal.size">Size</span>: <%= value.sizex %></p>
+	    					<div class="tools">
+	    					<% if(permissionsTable[value.rights]==0) { %>
+	    						<a class="btn btn-mini btn-ncta disabled" data-localize="modules.dashboard.modal.no-rights">No rights</a>
+	    					<% }else if(value.installed==1) { %>
+	    						<span class="status"><i class="icon-installed"></i> <span data-localize="modules.dashboard.modal.installed">Installed</span></span>
+	    					<% } else { %>
+	    						<a class="btn btn-mini btn-ncta install-widget" data-pre-row="<%= widgetRow %>" data-pre-col="<%= widgetCol %>" data-localize="modules.dashboard.modal.install">Install</a>
+	    					<% } %>
+	    					</div>
+	    				</li>
+	    				<% } %>
+    				<%	}) %>
+	    		
+	    		
+	    			
+
+	    		
+	    			
+	    		</ul>
+
+    		</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<% $.each(dashboards.options.widgetGroups,function(groupIndex,groupInfo){ %>
+		
+		
+		
+		
+		
+		
+    		<div class="modal-body span12" style="display:none" data-tab="<%= groupIndex %>">
+	
+	    		<ul class="widget-wrapper">
+	    		
+	    			<% var z=0; %>
+	    			<% $.each(groupInfo,function(index,value){ %>
+						<% z++; %>
+	    				<% if((max_size==0 || max_size >= value.sizex) && (z%2==1) && index!="report-first"){ %>
+	    			
+    					<li class="widget" data-widget="<%= index %>" data-params="<%= value.params %>">
+	    					<h2 data-localize="<%= value.localize %>"><%= value.name %></h2>
+	    					<p class="description"></p>
+	    					<p class="description"><span data-localize="modules.dashboard.modal.size">Size</span>: <%= value.sizex %></p>
+	    					<div class="tools">
+	    					<% if(permissionsTable[value.rights]==0) { %>
+	    						<a class="btn btn-mini btn-ncta disabled" data-localize="modules.dashboard.modal.no-rights">No rights</a>
+	    					<% }else if(value.installed==1) { %>
+	    						<span class="status"><i class="icon-installed"></i> <span data-localize="modules.dashboard.modal.installed">Installed</span></span>
+	    					<% } else { %>
+	    						<a class="btn btn-mini btn-ncta install-widget" data-pre-row="<%= widgetRow %>" data-pre-col="<%= widgetCol %>" data-localize="modules.dashboard.modal.install">Install</a>
+	    					<% } %>
+	    					</div>
+	    				</li>
+	    				<% } %>
+    				<%	}); %>
+	    		
+	    		
+	    			
+
+	    		
+	    			
+	    		</ul>
+	    		
+	    		<% var z=0; %>
+	    		<ul class="widget-wrapper">
+	    			<% $.each(groupInfo,function(index,value){ %>
+						<% z++; %>
+	    				<% if((max_size==0 || max_size >= value.sizex) && (z%2==0) && index!="report-first"){ %>
+	    			
+    					<li class="widget" data-widget="<%= index %>" data-params="<%= value.params %>">
+	    					<h2 data-localize="<%= value.localize %>"><%= value.name %></h2>
+	    					<p class="description"></p>
+	    					<p class="description"><span data-localize="modules.dashboard.modal.size">Size</span>: <%= value.sizex %></p>
+	    					<div class="tools">
+	    					<% if(permissionsTable[value.rights]==0) { %>
+	    						<a class="btn btn-mini btn-ncta disabled" data-localize="modules.dashboard.modal.no-rights">No rights</a>
+	    					<% }else if(value.installed==1) { %>
+	    						<span class="status"><i class="icon-installed"></i> <span data-localize="modules.dashboard.modal.installed">Installed</span></span>
+	    					<% } else { %>
+	    						<a class="btn btn-mini btn-ncta install-widget" data-pre-row="<%= widgetRow %>" data-pre-col="<%= widgetCol %>" data-localize="modules.dashboard.modal.install">Install</a>
+	    					<% } %>
+	    					</div>
+	    				</li>
+	    				<% } %>
+    				<%	}) %>
+	    		
+	    		
+	    			
+
+	    		
+	    			
+	    		</ul>
+
+    		</div>
+    		
+    		<% }) %>
+    		
+    		
+    		<div class="modal-body span12" data-tab="installed" style="display:none;">
+	
+	    		<ul class="widget-wrapper">
+	    		
+	    			<% var z=0; %>
+	    			<% $.each(installedWidgets,function(index,value){ %>
+						<% z++; %>
+	    				<% if((max_size==0 || max_size >= value.sizex) && (z%2==1) && index!="report-first"){ %>
+	    			
+    					<li class="widget" data-widget="<%= index %>" data-params="<%= value.params %>">
+	    					<h2 data-localize="<%= value.localize %>"><%= value.name %></h2>
+	    					<p class="description"></p>
+	    					<p class="description"><span data-localize="modules.dashboard.modal.size">Size</span>: <%= value.sizex %></p>
+	    					<div class="tools">
+	    					<% if(permissionsTable[value.rights]==0) { %>
+	    						<a class="btn btn-mini btn-ncta disabled" data-localize="modules.dashboard.modal.no-rights">No rights</a>
+	    					<% }else if(value.installed==1) { %>
+	    						<span class="status"><i class="icon-installed"></i> <span data-localize="modules.dashboard.modal.installed">Installed</span></span>
+	    					<% } else { %>
+	    						<a class="btn btn-mini btn-ncta install-widget" data-pre-row="<%= widgetRow %>" data-pre-col="<%= widgetCol %>" data-localize="modules.dashboard.modal.install">Install</a>
+	    					<% } %>
+	    					</div>
+	    				</li>
+	    				<% } %>
+    				<%	}); %>
+	    		
+	    		
+	    			
+
+	    		
+	    			
+	    		</ul>
+	    		
+	    		<% var z=0; %>
+	    		<ul class="widget-wrapper">
+	    			<% $.each(installedWidgets,function(index,value){ %>
+						<% z++; %>
+	    				<% if((max_size==0 || max_size >= value.sizex) && (z%2==0) && index!="report-first"){ %>
+	    			
+    					<li class="widget" data-widget="<%= index %>" data-params="<%= value.params %>">
+	    					<h2 data-localize="<%= value.localize %>"><%= value.name %></h2>
+	    					<p class="description"></p>
+	    					<p class="description"><span data-localize="modules.dashboard.modal.size">Size</span>: <%= value.sizex %></p>
+	    					<div class="tools">
+	    					<% if(permissionsTable[value.rights]==0) { %>
+	    						<a class="btn btn-mini btn-ncta disabled" data-localize="modules.dashboard.modal.no-rights">No rights</a>
+	    					<% }else if(value.installed==1) { %>
+	    						<span class="status"><i class="icon-installed"></i> <span data-localize="modules.dashboard.modal.installed">Installed</span></span>
+	    					<% } else { %>
+	    						<a class="btn btn-mini btn-ncta install-widget" data-pre-row="<%= widgetRow %>" data-pre-col="<%= widgetCol %>" data-localize="modules.dashboard.modal.install">Install</a>
+	    					<% } %>
+	    					</div>
+	    				</li>
+	    				<% } %>
+    				<%	}) %>
+	    		
+	    		
+	    			
+
+	    		
+	    			
+	    		</ul>
+
+    		</div>
+    		
+    		
+    	</div>

@@ -1,0 +1,12 @@
+<% if(quote.status === 'SENT') { %><span class="label label-quote-waiting last"
+																																									data-localize="modules.quotes.status.waiting">Waiting for your acceptance</span><% } %>
+
+<% if(quote.status === "REQUESTED" || quote.status === "PENDING") { %><span class="label label-quote-pending"
+																																																																						data-localize="modules.quotes.status.pending">Pending</span><% } %>
+<% if(quote.status === "REJECTED") { %>
+<span class="label label-quote-rejected last" data-localize="modules.quotes.status.rejected">Rejected</span>
+<% } %>
+
+<% if(quote.status === "ACCEPTED" || quote.status === "ACCEPTED_BY_CUSTOMER") { %>
+<span class="label label-quote-accepted last" data-localize="modules.quotes.status.accepted">Accepted</span>
+<% } %>

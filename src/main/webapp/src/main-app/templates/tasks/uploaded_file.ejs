@@ -1,0 +1,9 @@
+<% if (wrap){ %> <ul class="uploaded-files-list" id="reviews-list"> <% } %>
+	<li class="uploading" fileindex="<%= fileIndex  %>">
+		<span class="filename"><%= file.name %> </span>
+		<div class="progress progress-mini">
+                                           <div class="bar" style="width: 0%" data-progress="0"></div>
+                                        </div>
+	</li>
+<% if (wrap){ %> </ul><% } %>
+                                

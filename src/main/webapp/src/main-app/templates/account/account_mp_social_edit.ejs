@@ -1,0 +1,65 @@
+<section id="social-media-info" person-id="<%= contactData.id %>" type="profile">
+    <header>
+        <h2 data-localize="modules.my-account.social-media">Social Media</h2>
+
+    </header>
+    <div class="content">
+
+        <div class="control-group" group="social-networks">
+            <div class="control-label"></div>
+
+            <% if(contactData.contact.socialMediaContacts.length>0) { %>
+            <% $.each(contactData.contact.socialMediaContacts, function(i, currentSocialMedia){ %>
+
+            <div class="controls social-network-controls" pre-value="<%= currentSocialMedia.socialMedia.id %>"
+                pre-id="<%= currentSocialMedia.id %>">
+                <div class="phone-number">
+                    <select class="chosen-process social-networks" data-placeholder="Select social medium"
+                        data-localize-2="modules.my-account.select-social-media">
+                        <option></option>
+                        <% $.each(socialMedia, function(i, socialMediaInList){ %>
+
+                        <option data-network-type="<%= socialMediaInList.name.toLowerCase() %>"
+                            value="<%= socialMediaInList.id %>"><%= socialMediaInList.name %></option>
+
+                        <% }) %>
+                    </select>
+                    <input type="text" value="<%= currentSocialMedia.contact %>" />
+                    <a class="item-remove"><i class="icon-file-remove"></i></a>
+                </div>
+            </div>
+
+            <% }) %>
+            <% }else { %>
+            <div class="controls social-network-controls" pre-value="0" pre-id="0">
+                <div class="phone-number">
+                    <select class="chosen-process social-networks" data-placeholder="Select social medium"
+                        data-localize-2="modules.my-account.select-social-media">
+                        <option></option>
+                        <% $.each(socialMedia, function(i, socialMediaInList){ %>
+
+                        <option data-network-type="<%= socialMediaInList.name.toLowerCase() %>"
+                            value="<%= socialMediaInList.id %>"><%= socialMediaInList.name %></option>
+
+                        <% }) %>
+                    </select>
+                    <input type="text" />
+                    <a class="item-remove"><i class="icon-file-remove"></i></a>
+                </div>
+            </div>
+            <% } %>
+            <div class="controls">
+                <a class="add-more" add="social-network">+ <span
+                        data-localize="modules.my-account.add-another-social-media">Add another social media</span></a>
+            </div>
+        </div>
+
+
+
+
+        <div class="control-group actions">
+            <a class="btn btn-small btn-cta" data-localize="general.save-changes">Save changes</a>
+            <a class="btn btn-small btn-cancel" data-localize="general.cancel">Cancel</a>
+        </div>
+    </div>
+</section>

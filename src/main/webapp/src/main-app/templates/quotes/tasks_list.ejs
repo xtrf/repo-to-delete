@@ -1,0 +1,57 @@
+<table class="table table-striped tasks-table">
+    <thead>
+        <tr>
+            <th data-localize="general.id">ID</th>
+            <th data-localize="general.language-pair">Language pair</th>
+            <th class="task-cost" data-localize="general.cost">Cost</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <% $.each(tasks, function(i, task){ %>
+        <tr>
+            <td><a href="javascript:void(0);" title="" taskid="<%= task.id %>" class="single-task-href"><%= task.idNumber %></a></td>
+            <td>
+                <% if(task.languageCombination.sourceLanguage.symbol == "Any" && task.languageCombination.targetLanguage.symbol =="Any") { %>
+                -
+                <% }else { %>
+                <%= task.languageCombination.sourceLanguage.displayName %>
+                &raquo;
+                <%= task.languageCombination.targetLanguage.displayName %>
+                <% } %>
+            <td class="task-cost"><%= task.totalAgreed.formattedAmount %></td>
+        </tr>
+
+        <% }) %>
+
+    </tbody>
+    <% if(quoteTotalAgreed!=null) { %>
+    <tfoot>
+        <tr>
+            <td colspan="4" class="total-agreed"><span data-localize="general.total-cost">Total cost</span><span> : </span> <%= quoteTotalAgreed %></td>
+        </tr>
+    </tfoot>
+    <% } %>
+</table>
+
+    <% if(paginationPages != 1) { %>
+        <div class="pagination pagination-centered">
+            <ul id="tasks-pagination-list" class="">
+            <li><button id="prev-tasks" class="pagination-button <% if(currentPage + 1 == 1){%> disabled <% } %>">&laquo; <span data-localize="general.previous"></span></button></li>
+                <% for(var i=1; i<= paginationPages; i++) { %>
+                    <li class="pagination__list__item"><button class="pagination__list__item__button <% if(i == currentPage + 1 ){ %> is--active <%}%>" data-load="<%= i - 1 %>"><%= i %></button></li>
+                <% } %>
+            <li><button id="next-tasks" class="pagination-button <% if(currentPage + 1 == paginationPages){%> disabled <% } %>"><span data-localize="general.next"></span> &raquo;</button></li>
+            </ul>
+        </div>
+    <% } %>
+
+
+
+<% if(sessionObject.showVatInfo==true){ %>
+
+<div class="note note-info">
+
+    <i class="icon-info"></i> <strong data-localize="general.note">NOTE:</strong> <span data-localize="general.no-vat-info">Presented prices do not include VAT.</span>
+</div>
+<% } %>

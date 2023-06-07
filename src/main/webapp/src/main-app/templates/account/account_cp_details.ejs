@@ -1,0 +1,29 @@
+<div class="column left">
+    <section class="emails">
+        <header data-localize="modules.my-account.e-mail">E-mail</header>
+        <ul>
+            <li><a href="mailto:<%= contactPerson.contact.email %>"><%= contactPerson.contact.email %></a></li>
+        </ul>
+    </section>
+
+    <section class="phone-numbers">
+        <header data-localize="modules.my-account.phones">Phones</header>
+        <ul>
+            <% $.each(contactPerson.contact.phones, function(i, phone){ %>
+            <li><%= phone %></li>
+            <% }) %>
+        </ul>
+    </section>
+
+</div>
+<div class="column right">
+    <section class="im-social-media">
+        <header data-localize="modules.my-account.social-media">Social media</header>
+        <ul>
+            <% $.each(contactPerson.contact.socialMediaContacts, function(i, socialMedia){ %>
+            <li><%= socialMedia.socialMedia.name %>: <span><%= socialMedia.contact %></span></li>
+            <% }) %>
+
+        </ul>
+    </section>
+</div>

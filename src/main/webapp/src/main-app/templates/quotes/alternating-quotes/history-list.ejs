@@ -1,0 +1,33 @@
+<table class="quotes quotes-history table table-striped">
+	<thead>
+		<tr>
+			<th data-localize="general.name">Name</th>
+			<th data-localize="general.ref-no">Ref. No.</th>
+			<th data-localize="general.status">Status</th>
+			<th data-localize="general.cost" class="task-cost">Cost</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% $.each(this.alternatingQuotesList, function(i, quote){ %>
+		<tr>
+			<td>
+				<% if(permissionsTable['quote_view']==1){ %>
+				<a href="#!quote/<%= quote.id %>" class="quote-name-tooltip" rel="tooltip">
+					<% } %>
+					<span>
+						<%== $.View("templates/quotes/alternating-quotes/quote-name.ejs", {quote:quote}) %>
+					</span>
+					<% if(permissionsTable['quote_view']==1){ %></a> <% } %>
+			</td>
+			<td>
+				<%= quote.refNumber %>
+			</td>
+			<td>
+				<%== $.View("templates/quotes/alternating-quotes/quote-status.ejs", {quote:quote}) %>
+			</td>
+			<td class="task-cost"><span class="amount"><% if(!quote.isSingleQuote && quote.showFrom) { %><span data-localize="general.from">from</span><% } %> <%= quote.minimalTotalAgreed.formattedAmount %></span></td>
+		</tr>
+
+		<% }) %>
+	</tbody>
+</table>

@@ -1,0 +1,205 @@
+html {
+	background-color: #ECEBE9;
+	background-size: cover;
+}
+
+.topline {
+	height: 5px;
+	width: 100%;
+	position: absolute;
+	// background: var(--topNavigationButtonsColor);
+	background: #5F15A8;
+	top: 0;
+}
+
+.public-content-box-wrapper {
+	margin: 25px auto 0 auto;
+	position: relative;
+	width: 506px;
+}
+
+.public-content-box {
+	-webkit-transition: all linear 0.2s;
+	transition: all linear 0.2s;
+	position: relative;
+	z-index: 3;
+	@include box-shadow(0px 0px 18px 0px rgba(0, 0, 0, 0.10));
+	background: #fff;
+
+	h3 {
+		font-size: 16px;
+		color: #3b3b3b;
+		margin: 0 0 20px 0;
+		font-weight: 600;
+		line-height: 16px;
+	}
+
+	fieldset {
+		margin-bottom: 10px;
+
+		.form-group {
+			margin-bottom: 15px;
+		}
+	}
+
+	.wrapper {
+		overflow: hidden;
+		padding: 0 25px;
+	}
+
+	.content {
+		padding: 0;
+		margin: 0 !important;
+	}
+
+	.header {
+		background: white;
+		text-transform: uppercase;
+		padding-top: 25px;
+		padding-bottom: 25px;
+		@include box-shadow(0px 3px 10px -4px rgba(0, 0, 0, 0.17));
+		border-bottom: 1px solid #ccc;
+
+		.wrapper {
+			height: 50px;
+			line-height: 47px;
+			vertical-align: middle;
+
+			.pull-right {
+				height: 100%;
+				text-align: right;
+				vertical-align: middle;
+			}
+		}
+
+		.owner-logo {
+			display: inline-block;
+			img {
+				max-height: 50px;
+			}
+		}
+
+		.text-muted {
+			color: #BDB8B8;
+			margin-top: -3px;
+			margin-bottom: -4px;
+			line-height: 16px;
+			font-size: 12px;
+			overflow: hidden;
+			font-weight: 700;
+		}
+
+	}
+
+	.body {
+		.text-muted {
+			color: #c2c2c2;
+			margin-bottom: 16px;
+		}
+
+		.wrapper {
+			padding: 30px;
+		}
+
+		.pull-right .btn {
+			margin-left: 18px;
+		}
+
+		.back {
+			color: #707070;
+			display: inline-block;
+			margin-top: 9px;
+
+			i {
+				font-size: 21px;
+				vertical-align: sub;
+				line-height: 1;
+			}
+		}
+
+		.forgotten-pass {
+			line-height: 28px;
+			margin-left: 10px;
+		}
+
+	}
+
+	input[type="text"]:disabled {
+		border: 1px solid #ccc;
+	}
+
+	.password-with-preview input {
+		width: 200px;
+	}
+
+	.disclaimer .link {
+		margin-left: 5px;
+	}
+
+	.input-group-addon {
+		padding: 2px 15px;
+		i {
+			width: 20px;
+		}
+	}
+
+}
+
+.password-strength-indicator {
+	max-width: 50%;
+	float: left;
+	font-size: 10px;
+	padding-left: 2.5%;
+	color: $state-danger-text;
+}
+
+.cloud-sign-in {
+	margin-top: 25px;
+
+	.cloud-sign-in-button {
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
+.security-buttons-container {
+	display: flex;
+	justify-content: space-between;
+}
+form[name="sendResetPasswordEmailForm"],
+form[name="resetPasswordForm"],
+.security-buttons-container {
+	button.btn-success {
+		background-color: #5F15A8;
+		color: #fff;
+		&:hover,
+		&:focus {
+			background-color: #521291;
+		}
+	}
+}
+
+.or-section {
+  text-align: center;
+  margin: 25px 0;
+  position: relative;
+  span {
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+    padding: 0 50px;
+    font-weight: 600;
+		text-transform: uppercase;
+  }
+  &::before {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    z-index: 0;
+  }
+}

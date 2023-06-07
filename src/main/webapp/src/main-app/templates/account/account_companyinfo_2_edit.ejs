@@ -1,0 +1,77 @@
+<section id="billing-info">
+                                <header>
+                                    <h2 data-localize="modules.my-account.billing-address">Billing address</h2>
+                                    
+                                </header>
+                                <div class="content">
+                                    <div class="control-group">
+                                        <div class="control-label" data-localize="modules.my-account.address-line-1">Address line 1</div>
+                                        <!-- This address should be built dynamically - input data are separated, see edit view -->
+                                        <div class="controls">
+                                           <input type="text" class="input-large" id="bi-address" value="<%= companyInfo.address.address %>"/>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <div class="control-label" data-localize="modules.my-account.address-line-2">Address line 2</div>
+                                        <!-- This address should be built dynamically - input data are separated, see edit view -->
+                                        <div class="controls">
+                                           <input type="text" class="input-large" id="bi-address2" value="<%= companyInfo.address.address2 %>"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <div class="control-label" data-localize="modules.my-account.city-locality">City / Locality</div>
+                                        <div class="controls"><input type="text" value="<%= companyInfo.address.city %>" id="bi-city" /></div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <div class="control-label" data-localize="modules.my-account.zip-postal-code">Zip / Postal code</div>
+                                        <div class="controls"><input type="text" class="input-small" value="<%= companyInfo.address.postalCode %>" id="bi-postal" /></div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <div class="control-label" data-localize="modules.my-account.country">Country</div>
+                                        <div class="controls">
+                                            <select class="chosen-process" id="bi-select-country">
+                                            <% if(companyInfo.address.country==null || companyInfo.address.country.id==null || companyInfo.address.country.id==0) { %>
+                                            		<option value="0">- NA -</option>
+                                            		<% } %>
+                                                <% $.each(this.countries, function(i, country){ %>
+                                                	
+                                    				<option value="<%= country.id %>"><%= country.localizedName %></option>
+                                    			<% }) %>
+                                            </select></div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <div class="control-label" data-localize="modules.my-account.state-province">State / Province</div>
+                                        <div class="controls">
+                                            <select class="chosen-process" id="bi-select-province">
+                                                <% $.each(this.provinces, function(i, province){ %>
+                                    				<option value="<%= province.id %>"><%= province.localizedName %></option>
+                                    			<% }) %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                     
+                                     <div class="control-group">
+                                        <div class="control-label"></div>
+                                        <div class="controls">
+                                            <label class="checkbox">
+                                              <input type="checkbox" id="bi-use-as-correspondence"><span data-localize="modules.my-account.use-my-billing-address-for-c">Use my billing address for correspondence</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div id="correspondence-address-wrapper">
+                                    	
+                                    
+                                    
+                                    </div>
+ 
+                                    <div class="control-group actions">
+                                        <a class="btn btn-small btn-cta" data-localize="general.save-changes">Save changes</a>
+                                        <a class="btn btn-small btn-cancel" data-localize="general.cancel">Cancel</a>
+                                    </div>
+                                </div>
+
+                            </section>

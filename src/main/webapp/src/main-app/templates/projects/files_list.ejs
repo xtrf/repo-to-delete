@@ -1,0 +1,66 @@
+<section class="file-list">
+  <div class="files-accordion">
+    
+    <% if(showOutput) { %>
+    <div class="files-group <% if(!showOutput) { %>collapsed<% } %>" id="result-files">
+      
+      <header>
+
+        <a class="accordion-toggle" data-toggle="collapse"  href="javascript:void(0);">
+          <i class="icon-collapse"></i> <span data-localize="general.result-files">Result files</span>
+        </a>
+
+        <span class="tools">
+        
+          <% if(typeof showExpandOutput == 'undefined' || showExpandOutput==true) { %>
+            <button class="btn btn-mini expand-files" expand-target="result" ><span data-localize="general.expand-all">Expand all</span></button>
+          <% } %>
+          
+          <% if(downloadOutputLink!=""){ %>
+          <a class="btn btn-primary btn-mini" href="<%= downloadOutputLink %>"><i class="icon-download-blue"></i> <span data-localize="general.download-all">Download all result files</span></a>
+          <% } %>
+        
+        </span>
+      </header>
+      
+
+      <div class="result-files-container accordion-body collapse <% if(showOutput) { %>in<% } %>">
+        <div class="file-browser">
+          <ul class="level0">
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    <% } %>
+
+    <div class="files-group <% if(showOutput) { %>collapsed<% } %>" id="source-files">
+      
+      <header>
+      
+        <a class="accordion-toggle" data-toggle="collapse"  href="javascript:void(0);">
+          <i class="icon-collapse"></i> <span data-localize="general.source-files">Source files</span>
+        </a>
+
+        <span class="tools search">
+          <input type="text" class="filter-files" placeholder="Search files" data-localize-2="general.search-files" data-localize="general.search-files" />
+
+          <% if(typeof showExpandInput == 'undefined' || showExpandInput==true) { %> 
+          <button class="btn btn-mini expand-files" expand-target="source" <% if(showOutput) { %>style="display:none;" <% } %> ><span data-localize="general.expand-all">Expand all</span></button>
+          <% } %>
+
+        </span>
+      
+      </header>
+
+      <div class="source-files-container accordion-body collapse <% if(!showOutput) { %>in<% } %>">
+        <div class="file-browser">
+          <ul class="level0">
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>

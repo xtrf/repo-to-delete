@@ -1,0 +1,142 @@
+.invoices-list{
+    .active-counter{
+        text-align: center;
+        .counter{
+            border: none;
+            border-bottom: 1px dashed $borderLine;
+            padding: 0px 0px 27px 0px;
+            margin-bottom: 18px;
+        }
+    }
+    .invoices-outstanding{
+        padding-bottom: 9px;
+        margin-bottom: 36px;
+        background: url(../img/dashed-embossed.png) bottom left repeat-x;
+
+        table.invoices{
+            td.invoice-due-date{
+                font-weight: bold;
+                color: $xRed;
+            }
+        }
+    }
+    .invoices-outstanding header{
+        background: url(../img/dashed-embossed.png) bottom left repeat-x;
+        overflow: hidden;
+        padding-left: 9px;
+        padding-right: 9px;
+        padding-bottom: 9px;
+        margin-bottom: 9px;
+        h4{
+            font-size: 14px;
+            line-height: 22px;
+            font-weight: normal;
+            color: $xDarkGray;
+            
+            color: $xRed;
+            font-weight: bold;
+            text-transform: uppercase;
+            @extend .pull-left;
+
+            .icon-error{
+                margin-top: -2px;
+            }
+        }
+    }
+    table.invoices {
+        .invoice-value{
+            font-size: 14px;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        a.details{
+            font-size: 10px;
+        }
+
+        td{
+            vertical-align: middle;
+        }
+        td.invoice-download{
+            ul{
+                margin-left: 0px;
+                margin-bottom: 6px;
+                margin-top: 6px;
+            }
+            li{
+                list-style-type: none;
+                padding-left: 0px;
+                padding-bottom: 6px;
+                margin-bottom: 3px;
+                font-size: 11px;
+                border-bottom: 1px dashed $borderLine; 
+                .confirmation-download a{
+                    &.disabled{
+                        cursor: default;
+
+                        &:hover{
+                            text-decoration: none;
+                        }
+                    } 
+                }
+                &.last{
+                    border-bottom: none;
+                    padding-bottom: 0;
+                    margin-bottom: 0;   
+                }
+                .confirmation-download .tools{
+                    top: -4px;
+                    left: -3px;
+                    z-index: 1100;
+                    
+                   
+                    span.name{
+                        box-sizing: border-box;
+                        display: block;
+                        width:auto;
+                        padding: 6px 9px 5px 3px;
+                        line-height: 1.25em;
+                        font-size: 11px;
+                        word-wrap: break-word;
+                        text-shadow: 1px 1px 0px white;
+                        color:  $xDarkGray;
+                        @include gradient-vertical(#f5f5f5, #ededed);
+                        border-bottom: 1px solid darken(#ededed, 5%);
+                        padding-left: 22px;
+                        .icon-download-pdf{
+                            margin-left: -20px;
+                        }
+                        a{
+                            display: inline;
+                            padding: 0;
+                            background: none;
+                            border: none;
+                            font-size: 11px;
+                            color: $xBlue;
+                        }
+                    }
+                }
+            }
+            
+            .btn-prepend{
+                color: $xDarkGray;
+            }
+        }
+    }
+
+    .invoice-action-edit-office {
+        cursor: pointer;
+
+        i {
+            visibility: hidden;
+        }
+
+        &:hover i {
+            visibility: visible;
+        }
+    }
+
+    .dropdown-select2 {
+        margin-top: 0;
+    }
+}

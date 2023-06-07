@@ -1,0 +1,82 @@
+<div class="modal-body">
+
+    <div class="content">
+        <div class="qr-actions">
+            <form action="" method="" autocomplete="on" class="form-horizontal">
+                <% if(this.priceProfiles.length > 1) { %>
+                <div class="control-group " >
+                    <label class="control-label" data-localize="general.price-profile">Price profile</label>
+                    <div class="controls">
+                        <select id="select-price-profile" class="chosen-process" data-placeholder="Select price profile" data-localize-2="modules.quotes.input-quote-select-pp-ph">
+                            <option></option>
+                            <% $.each(this.priceProfiles, function(i, priceProfile){ %>
+                            <option value="<%= priceProfile.name %>"><%= priceProfile.name %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <% } %>
+
+                <div class="control-group" id="contact-persons">
+                    <label class="control-label" data-localize="general.contact-persons">Contact persons</label>
+                    <div class="controls"></div>
+                    <div class="contact-list" style="padding-top:10px;"></div>
+                    <div class="controls">
+                        <select class="select-contact-persons-single" data-placeholder="Select contact persons" data-localize-2="modules.quotes.input-quote-select-contacts-ph">
+                            <option></option>
+                            <% $.each(this.contactPersons, function(i, contactPerson){ %>
+                            <option value="<%= contactPerson.id %>"><%= _.escape(contactPerson.name) %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <a class="link-primary" id="add-cp" style="display:none;">+ <span data-localize="modules.quotes.add-contact-person">Add contact person</span></a>
+                </div>
+                <div class="control-group " id="notes">
+                    <label class="control-label" data-localize="general.notes">Notes</label>
+                    <div class="controls">
+                        <textarea id="input-quote-notes"></textarea>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="qr-summary-new">
+
+            <dl>
+                <% if(this.offices.length > 1) { %>
+                <dt data-localize="general.selected-office">Selected office</dt>
+                <dd id="summary-office"></dd>
+                <% } %>
+
+                <dt data-localize="general.selected-service">Selected service</dt>
+                <dd id="summary-tos"></dd>
+
+                <dt data-localize="modules.quotes.specialization">Specialization</dt>
+                <dd id="summary-specialization"></dd>
+
+                <dt data-localize="general.source-lang">Source language</dt>
+                <dd id="summary-source-lang"></dd>
+
+                <dt data-localize="general.target-langs">Target languages</dt>
+                <dd id="summary-target-langs"></dd>
+            </dl>
+
+            <div class="controls" style="display:none;">
+                <select multiple="multiple" class="chosen-process" id="select-contact-persons" data-placeholder="Select contact persons" data-localize-2="modules.quotes.input-quote-select-contacts-ph">
+                    <option></option>
+                    <% $.each(this.contactPersons, function(i, contactPerson){ %>
+                    <option value="<%= contactPerson.id %>"><%= _.escape(contactPerson.name) %></option>
+                    <% }) %>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <a class="link-return pull-left" href=""><i class="icon-return"></i> <span data-localize="general.estimations">Estimations</span></a>
+
+    <span class="raq-rap-wrapper">
+    <button class="btn btn-cta next-step btn-large disabled" data-localize="general.raq-final">Request quote</button>
+    </span>
+</div>

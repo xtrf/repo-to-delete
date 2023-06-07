@@ -1,0 +1,35 @@
+<div class="modal-body overview">
+                <div class="content content-overview tour-s05">
+                    <div class="top-bar">
+                        <header>
+                            <h2><i class="triangle"></i><i class="icon-invoices-overview icon-overview"></i> <span data-localize="sections.invoices">Invoices</span></h2>
+                            <% if(permissionsTable['invoices_browse']==1){ %><a href="#!invoices/active/1" class="section-direct-link" data-localize="modules.tour.step5.go-to-invoices">Go to invoices now!</a><% } %>
+                        </header>
+                        <a class="btn-close" data-dismiss="modal"></a>
+
+                    </div>
+
+                        <div class="content-wrapper">
+                            <h3 data-localize="modules.tour.step5.header">All invoices in one place</h3>
+                            <p>
+                                <ul>
+                                    <li data-localize="modules.tour.step5.list1">Watch payment dates and amounts</li>
+                                    <li data-localize="modules.tour.step5.list2">Get an overview of your invoices status</li>
+                                    <li data-localize="modules.tour.step5.list3">Download invoices as PDF file</li>
+                                    <li data-localize="modules.tour.step5.list4">Quickly navigate between active and past invoices</li>
+                                </ul>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="modal-footer" id="tour-step-5">
+                    <a class="back-link pull-left btn-back btn btn-small"><i class="icon-previous-step"></i></a>  
+                    <div class="tools">
+                        <a class="btn btn-small btn-forward"><span data-localize="modules.tour.step5.reports-overview">Reports overview</span> <i class="icon-forward-step"></i></a>
+
+                        <a class="skip-link" data-dismiss='modal' data-localize="modules.tour.skip-partner-zone-tour">Skip Partner Zone tour</a>
+
+                    </div>
+                </div>

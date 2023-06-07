@@ -1,0 +1,57 @@
+<div class="modal modal-contact-details " id="myModal" style="display:none;">
+
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">× <span data-localize="general.close">Close</span></button>
+    <div class="contact-info">
+
+      <div class="profile-pic pull-left"><img src="<%= contactData.avatar %>" onerror="setDefaultAvatar2(this)" /></div>
+      <div class="details">
+        <span class="name"><a class="quick-message" user="<%= contactData.id %>" user-name="<%= contactData.name %>"
+            user-position="<%= contactData.position %>"><span
+              class="icon icon-contact"></span></a><%= contactData.name %></span>
+        <div class="job-title"><%= contactData.position %></div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-body">
+    <div class="content contact-details">
+      <div class="column left">
+        <section class="emails">
+          <header data-localize="general.e-mail">E-mail</header>
+          <ul>
+            <li><a href="mailto:<%= contactData.email %>"><%= contactData.contact.email %></a></li>
+          </ul>
+        </section>
+        <% if(contactData.contact.phones.length>0) { %>
+        <section class="phone-numbers">
+
+          <header data-localize="modules.my-account.phone-number">Phone number</header>
+          <ul>
+            <% for(var i=0; i< contactData.contact.phones.length; i++){ %>
+            <li><%= contactData.contact.phones[i] %></li>
+            <% } %>
+          </ul>
+        </section>
+        <% } %>
+
+      </div>
+      <div class="column right">
+        <% if(contactData.contact.socialMediaContacts.length>0) { %>
+        <section class="im-social-media">
+          <header data-localize="general.im-and-social-media">IM &amp; Social media</header>
+          <ul>
+            <% $.each(contactData.contact.socialMediaContacts, function(i, socialMedia){ %>
+            <li><span
+                class="icon-<%= socialMedia.socialMedia.name.toLowerCase() %>"></span><%= socialMedia.socialMedia.name %>:
+              <span><%= socialMedia.contact %></span></li>
+            <% }) %>
+          </ul>
+        </section>
+        <% } %>
+      </div>
+
+    </div>
+  </div>
+</div>

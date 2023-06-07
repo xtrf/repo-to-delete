@@ -1,0 +1,22 @@
+<div class="modal modal-fixed-top modal-process modal-qr modal-qr-step1" id="bigModal" style="display:none;">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">× <span data-localize="general.close">Close</span></button>
+        <h3><i class="icon-qr-modal"></i> <span data-localize="general.raq">Request a quote</span></h3>
+    </div>
+
+    <div class="modal-step-indicator <% if(sessionObject.showFileStats === false) { %>three-step<% } %>">
+        <ul>
+            <li class="step1 active"><span data-localize="modules.quotes.request.step-1">Basic information</span></li>
+            <li class="step2"><span data-localize="modules.quotes.request.step-2">Source materials</span></li>
+            <% if(sessionObject.showFileStats !== false) { %><li class="step3"><span data-localize="modules.quotes.request.step-3">Estimations</span></li><% } %>
+            <li class="step4"><span data-localize="modules.quotes.request.step-4">Summary</span></li>
+        </ul>
+    </div>
+
+    <div class="modal-body-footer" id="step-1" ></div>
+    <div class="modal-body-footer" id="step-2-new" style="display:none;"></div>
+    <div class="modal-body-footer" id="step-3" style="display:none;"></div>
+    <div class="modal-body-footer" id="step-4" style="display:none;"></div>
+    <div class="modal-body-footer" id="step-5" style="display:none;"></div>
+</div>

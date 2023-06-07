@@ -1,0 +1,17 @@
+<div data-status="empty" class="module module-widget-new module-quotes">
+                <header>
+                  <span><a data-localize="<%= localizeHeader %>">Projects statistics</a></span>
+                  <span class="tools">
+                   <% if(dashboards.options.IE8==false){ %> <a class="widget-detach"><i class="icon-widget-detach"><%== $.View("templates/layouts/icons/x_icon.ejs",{}) %></i></a> <% } %>
+                  </span>
+                </header>
+                <section class="content">
+                      <div class="empty-set-placeholder">
+                          <div class="active-counter">
+                            <p data-localize="general.you-have-0-active-projects">You have {0} active projects</p>
+                           
+                          </div>
+                           <a class="btn btn-ncta btn-large rap" data-localize="general.rap">Request a project</a>
+                      </div>   
+                </section>
+              </div>

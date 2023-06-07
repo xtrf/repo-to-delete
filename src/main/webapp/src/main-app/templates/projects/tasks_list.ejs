@@ -1,0 +1,115 @@
+<% for(var i=0; i< tasksAwaitingCR; i++) { %>
+<%
+var splittedArray=location.hash.split("/task");
+var taskURL=splittedArray[0]+'/task/'+tasks[i].id;
+%>
+<div class="tasks-list">
+    <% //$.each(tasks, function(i, task){ %>
+    <div class="task-item <% if(tasks[i].hasActivitiesAwaitingReview==true){ %> task-cr<% } %>">
+
+        <div class="cell primary">
+            <div class="field field-id">
+                <a href="<%= taskURL %>" title="" taskid="<%= tasks[i].id %>" class="task-id single-task-href"><%= tasks[i].idNumber %></a>
+            </div>
+            <% if(tasks[i].hasActivitiesAwaitingReview==true){ %>
+            <div class="field field-actions">
+
+                <a href="<%= taskURL %>" title="" taskid="<%= tasks[i].id %>" class="btn btn-cta single-task-href"><i class="icon icon-task-review"></i><span data-localize="modules.projects.review-files" >Review files</span></a>
+            </div><% }else{ %>
+            <div class="field field-status" data-localize="modules.tasks.status.<%= tasks[i].status %>">
+	            <%= tasks[i].status %>
+            </div>
+            <% } %>
+
+        </div>
+
+        <div class="cell secondary grads">
+            <div class="field meta">
+                <% if(typeof tasks[i].deadline != 'undefined' && tasks[i].deadline!=null) { %>
+
+                <div class="field">
+                    <i class="icon icon-task-deadline" rel="tooltip" data-original-title="Deadline" data-placement="top" data-localize-2="general.deadline"></i> <%= tasks[i].deadline.formatted %>
+                </div>
+                <% } %>
+
+                <div class="field">
+                    <i class="icon icon-task-lang-combination" rel="tooltip"  data-original-title="Language pairs" data-placement="top" data-localize-2="general.langs-comb"></i>
+                    <% if(tasks[i].languageCombination.sourceLanguage.symbol == "Any" && tasks[i].languageCombination.targetLanguage.symbol =="Any") { %>
+                    -
+                    <% }else { %>
+                    <%= tasks[i].languageCombination.sourceLanguage.displayName %>
+                    &raquo;
+                    <%= tasks[i].languageCombination.targetLanguage.displayName %>
+                    <% } %>
+                </div>
+            </div>
+            <div class="field field-cost">
+                <%= tasks[i].totalAgreed.formattedAmount %>
+            </div>
+        </div>
+
+
+
+    </div>
+    <% //}) %>
+</div>
+
+<% } %>
+<% if(tasksAwaitingCR<tasks.length) { %>
+<div class="separator"></div>
+<table class="table table-striped tasks-table">
+    <thead>
+        <tr>
+            <th data-localize="general.id">ID</th>
+            <th data-localize="general.language-pair">Language pair</th>
+            <th data-localize="general.status">Status</th>
+            <th data-localize="general.deadline">Deadline</th>
+            <th class="task-cost" data-localize="general.cost">Cost</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% for(var j=tasksAwaitingCR; j<tasks.length; j++) { %>
+        <tr>
+            <%
+            var splittedArray=location.hash.split("/task");
+            var taskURL=splittedArray[0]+'/task/'+tasks[j].id;
+            %>
+            <td><a href="<%= taskURL %>" title="" taskid="<%= tasks[j].id %>" class="single-task-href"><%= tasks[j].idNumber %></a></td>
+            <td>
+                <% if(tasks[j].languageCombination.sourceLanguage.symbol == "Any" && tasks[j].languageCombination.targetLanguage.symbol =="Any") { %>
+                -
+                <% }else { %>
+                <%= tasks[j].languageCombination.sourceLanguage.displayName %>
+                &raquo;
+                <%= tasks[j].languageCombination.targetLanguage.displayName %>
+                <% } %>
+            </td>
+            <td data-localize="modules.tasks.status.<%= tasks[j].status %>">
+	            <%= tasks[j].status %>
+            </td>
+            <td><% if(tasks[j].deadline!=null) { %><%= tasks[j].deadline.formatted %><% } else { %> - <% } %></td>
+            <td class="task-cost"><%= tasks[j].totalAgreed.formattedAmount %></td>
+
+        </tr>
+        <% } %>
+
+    </tbody>
+</table>
+    <% if(paginationPages != 1) { %>
+        <div class="pagination pagination-centered">
+            <ul id="tasks-pagination-list" class="">
+            <li><button id="prev-tasks" class="pagination-button <% if(currentPage + 1 == 1){%> disabled <% } %>">&laquo; <span data-localize="general.previous"></span></button></li>
+                <% for(var i=1; i<= paginationPages; i++) { %>
+                    <li class="pagination__list__item"><button class="pagination__list__item__button <% if(i == currentPage + 1 ){ %> is--active <%}%>" data-load="<%= i - 1 %>"><%= i %></button></li>
+                <% } %>
+            <li><button id="next-tasks" class="pagination-button <% if(currentPage + 1 == paginationPages){%> disabled <% } %>"><span data-localize="general.next"></span> &raquo;</button></li>
+            </ul>
+        </div>
+    <% } %>
+<% } %>
+<% if(sessionObject.showVatInfo==true){ %>
+<div class="note note-info">
+    <i class="icon-info"></i> <strong data-localize="general.note">NOTE:</strong> <span data-localize="general.no-vat-info">Presented prices do not include VAT.</span>
+</div>
+<% } %> 

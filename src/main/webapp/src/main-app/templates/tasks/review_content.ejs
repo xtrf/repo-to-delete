@@ -1,0 +1,126 @@
+<div class="cols">
+    <div class="col col-left pull-left">
+      <header>
+        <h2 data-localize="modules.tasks.files-for-review">Files for review</h2>
+        <% if(taskReview.filesForReviewDownloadable) { %>
+        	<div class="actions">
+            	<a class="cta-link" href="<%= downloadAllFilesURL %>"><i class="icon icon-download"></i> <span data-localize="modules.tasks.download-all">Download all files</span></a>
+        	</div>
+        <% } %>
+    </header>
+    <section class="review-list">
+        <ul>
+        <% $.each(taskReview.filesForReview, function(i, file){ %>
+            <% if(file.onlineReview) { %>
+            <li class="online-review">
+                <div class="confirmation-download">
+                    <a href="<%= file.fileUrl %>" target="_blank"><i class="icon icon-online-review" rel="tooltip" title="Online review" data-original-title="Online review" data-placement="top" data-localize-2="modules.tasks.online-review"></i> <%= file.fileName %></a>
+                    <div class="tools">
+                        <a href="<%= file.fileUrl %>" target="_blank">
+                        	<% if(file.onlineReviewType == 'XTM'){ %>
+                        		<i class="icon icon-xtm"></i> <span data-localize="general.xtm-review">Review in XTM</span>
+                        	<% } %>
+                        	<% if(file.onlineReviewType == 'MEMSOURCE'){ %>
+                        		<i class="icon icon-preview"></i><span data-localize="general.memsource-review">Review in Memsource</span>
+                        	<% } %>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <% } else { %>
+                <li>
+                	<% if(file.downloadable) { %>
+                    	<a href="<%= file.downloadURL  %>"><%= file.fileName %></a>
+                    <% } else { %>
+                    	<span><%= file.fileName %></span>
+                    <% } %>
+                </li>
+            <% } %>
+        <% }) %>
+        </ul>
+
+    </section>
+    <i class="shadow"></i>
+</div>
+<div class="col col-right pull-left">
+  <form id="fileupload" action="" method="POST" enctype="multipart/form-data">
+  <input type="file" name="files[]" style="display:none;" id="real-upload-button" multiple>
+    <header>
+        <h2><span data-localize="modules.projects.your-reviews">Your reviews</span> <span class="optional" data-localize="modules.projects.optional">optional</span></h2>
+        <% if(hasReviewedFiles){ %>
+            <div class="actions">
+                <a class="cta-link upload-button-handler"><i class="icon icon-add-more "></i> <span data-localize="general.add-files">Add files</span></a>
+                <span class="loader"></span>
+            </div>
+        <% }else{ %>
+        	<div class="actions" style="display:none;">
+                <a class="cta-link upload-button-handler"><i class="icon icon-add-more "></i> <span data-localize="general.add-files">Add files</span></a>
+                <span class="loader"></span>
+            </div>
+        <% } %>
+    </header>
+    <section class="review-list" id="user-reviews">
+
+        <% if(!hasReviewedFiles){ %>
+        <div class="empty-set-placeholder">
+            <i class="icon icon-upload-reviews"></i><br>
+            <h3 class="no-dnd" data-localize="modules.tasks.drag-drop">Drag&amp;drop your reviews</h3>
+            <span class="no-dnd" data-localize="general.or">or</span> <a class="upload-button-handler" data-localize="general.browse-files">Browse your computer
+
+            </a>
+        </div>
+
+
+
+        <% }else{ %>
+       <ul class="uploaded-files-list" id="reviews-list">
+           <% $.each(reviewedFiles,function(index,reviewedFile){ %>
+           <li class="uploading" fileindex="-1" data-filename="<%= reviewedFile.fileName %>">
+               <span class="filename"><%= reviewedFile.fileName %> </span>
+               <a class="file-remove-cr" href="javascript:void(0)"><i class="icon-file-remove"></i></a>
+           </li>
+           <% }) %>
+        </ul>
+        <% } %>
+
+    </section>
+    <section class="review-comments">
+        <label for="review-comments" data-localize="general.comments">Comments</label>
+        <textarea id="review-comments"></textarea>
+    </section>
+       </form>
+</div>
+</div>
+<footer>
+    <i class="separator"></i>
+    <div class="col col-left meta">
+
+        <div class="field field-responsible">
+            <i class="icon icon-responsible"></i>
+            <span data-localize="general.responsible">Responsible:</span>
+            <% if (responsibleChangePermission == true) { %>
+            <a class="cta-link responsible-change">
+                <% } %>
+                <% if(taskReview.contactPerson) { %>
+                <%= taskReview.contactPerson.name %>
+                <% }else { %>
+                <span data-localize="general.not-selected">not selected</span>
+                <% } %>
+                <% if (responsibleChangePermission == true) { %>
+            </a>
+            <% } %>
+        </div>
+        <% if(taskReview.dueDate != null) { %>
+        <% if (isOverdue) { %>
+        <div class="field field-deadline overdue"><i class="icon icon-task-deadline-overdue" rel="tooltip" title="Deadline" data-original-title="Deadline" data-placement="top" data-localize-2="general.deadline"></i> <%= taskReview.dueDate.formatted %></div>
+        <% }else{ %>
+            <div class="field field-deadline"><i class="icon icon-task-deadline" rel="tooltip" title="Deadline" data-original-title="Deadline" data-placement="top" data-localize-2="general.deadline"></i> <%= taskReview.dueDate.formatted %></div>
+        <% } %>
+        <% } %>
+    </div>
+    <div class="col col-right">
+        <a data-dismiss="modal" class="btn btn-small link-btn" data-localize="modules.tasks.finish-later">I will finish later</a>
+        <a data-review-id="" class="btn btn-small btn-cta finish-review" data-localize="modules.tasks.finish-review">Finish review</a>
+    </div>
+
+</footer>

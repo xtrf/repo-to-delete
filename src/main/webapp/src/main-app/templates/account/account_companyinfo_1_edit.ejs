@@ -1,0 +1,56 @@
+ <section id="company-contact-info">
+    
+    <header>
+        <h2 data-localize="modules.my-account.contact-info">Contact info</h2>
+
+    </header>
+
+    <div class="content">
+        <div class="control-group">
+            <div class="control-label" data-localize="modules.my-account.e-mail">E-mail</div>
+            <div class="controls">
+                <input type="text" value="<%= companyInfo.contact.email %>" id="ci-email"/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="control-label" data-localize="modules.my-account.website">Website</div>
+            <div class="controls">
+                <input type="text" value="<%= companyInfo.contact.www %>" id="ci-www"/>
+            </div>
+        </div>
+            
+        <div class="control-group">
+            <div class="control-label" data-localize="modules.my-account.phones">Phones</div>
+            <% $.each(companyInfo.contact.phones, function(i, phone){ %>
+            <div class="controls phone-controls">
+                <div class="phone-number">
+                    <input type="text" class="phone-number-input partner-data" value="<%= phone %>"/>
+                    <% if(companyInfo.contact.phonesSMS[i]==1){ %>
+                    <button class="sms-enable btn btn-mini active" data-toggle="button"><i class="icon-accept"></i> <span data-localize="general.sms-enabled">SMS enabled</span></button>
+                    <% }else{ %>
+                    <button class="sms-enable btn  btn-mini" data-toggle="button"><span data-localize="general.sms-enable">Enable SMS</span></button>
+                    <% } %>
+                    <a class="item-remove"><i class="icon-file-remove"></i></a>
+                </div>
+            </div>
+            <% }) %>
+            <div class="controls" <% if(companyInfo.contact.phones.length>=3) { %> style="display:none;" <% } %>>
+                <a class="add-more" add="phone">+ <span data-localize="modules.my-account.add-phone-number">Add phone number</span></a>
+            </div>
+        </div>
+
+        <div class="control-group">
+                <div class="control-label" data-localize="modules.my-account.fax">Fax</div>
+                <div class="controls">
+                 <input type="text" value="<%= companyInfo.contact.fax %>" id="ci-fax" />
+             </div>
+         </div>
+
+         <div class="control-group actions">
+             <a class="btn btn-small btn-cta" data-localize="general.save-changes">Save changes</a>
+             <a class="btn btn-small btn-cancel" data-localize="general.cancel">Cancel</a>
+         </div>
+     </div>
+
+</section>

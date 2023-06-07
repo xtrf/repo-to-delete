@@ -1,0 +1,141 @@
+<div class="invoices-outstanding">
+
+    <header>
+        <h4><i class="icon-error"></i> <span data-localize="modules.invoices.outstanding">Outstanding payments</span></h4>
+    </header>
+
+    <table class="invoices table table-striped" id="overdue-invoices">
+        <thead>
+            <tr>
+                <th data-localize="general.id">ID</th>
+                <% if (offices.length > 1) { %>
+                <th data-localize="general.office">Office</th>
+                <% } %>
+                <th data-localize="modules.invoices.due-date">Due Date</th>
+                <th data-localize="modules.invoices.value" <% if(permissionsTable['invoice_download']==0){ %>class="last"<% } %>>Value</th>
+                <% if(permissionsTable['invoice_download']==1){ %><th class="empty last" data-localize="general.docs">Documents</th><% } %>
+            </tr>
+        </thead>
+        <tbody>
+            <% $.each(this.overdueInvoices, function(i, invoice){ %>
+            <tr class="module-invoice" data-invoice-id="<%= invoice.id %>">
+                <td>
+                    <% if(invoice.finalNumber==null){ %>
+                        <% if(invoice.creditNoteNumber==null){ %>
+                        <%= invoice.draftNumber %>
+                        <% } else { %>
+                        <%= invoice.creditNoteNumber %>
+                        <% } %>
+                    <% } else { %>
+                    <%= invoice.finalNumber %>
+                    <% } %>
+                </td>
+                <% if (offices.length > 1) { %>
+                <td>
+                    <% if (invoice.notPaid === true) { %>
+                        <div class="edit-office">
+                            <div class="invoice-action-edit-office">
+                                <span class="office-name">
+                                    <%= invoice.office.name %>
+                                </span>
+                                <i class="icon-id-edit"></i>
+                            </div>
+
+                            <div class="dropdown-select2 dropdown-select2-small hide">
+                                <div data-toggle="dropdown" id="item-chosen" class="dropdown-toggle">
+                                    <% if (invoice.office.name.length > 60) { %>
+                                        <%= invoice.office.name.substr(0,57) + '...' %>
+                                    <% } else { %>
+                                        <%= invoice.office.name %>
+                                    <% } %>
+                                    <b class="caret"></b>
+                                </div>
+
+                                <ul class="dropdown-menu">
+                                    <% $.each(offices, function(i, office) { %>
+                                    <li>
+                                        <a class="invoice-action-change-office" data-office-name="<%= office.name %>">
+                                            <span><%= office.name %></span>
+                                        </a>
+                                    </li>
+                                    <% }) %>
+                                </ul>
+                            </div>
+                        </div>
+                    <% } else { %>
+                        <%= invoice.office.name %>
+                    <% } %>
+                </td>
+                <% } %>
+                <td class="invoice-due-date"><% if(invoice.expectedFullyPaidDate!= undefined && invoice.expectedFullyPaidDate.formatted!=null) { %><%= invoice.expectedFullyPaidDate.formatted %><% } else { %>- <% } %></td>
+                <td class="invoice-value"><%= invoice.formattedTotalBrutto %></td>
+                <!-- <td><%= invoice.paymentState %></td>-->
+                <% if(permissionsTable['invoice_download']==1){ %>
+                <td class="invoice-download">
+
+
+                    <% if(invoice.documents.length>0) {%>
+                    <ul>
+                        <% $.each(invoice.documents, function(i, document){ %>
+                        <li <% if(i==invoice.documents.length-1) {%> class="last" <% } %>>
+                        <div class="confirmation-download">
+                                                    <span><i class="icon-download-pdf"></i>
+                                                                    <a <% if(permissionsTable['invoice_download']==1){ %> href="<%= document.downloadURL %><% if(pdf_info.acrobat!=null) { %>?inline=true<% } %>" <% if(pdf_info.acrobat!=null) { %>target="_blank"<% } %> <% } else { %> class="disabled" <% } %> data-localize="modules.invoices.invoice">
+                                                                    Invoice
+                                                        </a>
+
+                                                                </span>
+                            <% if(pdf_info.acrobat=="installed") { %>
+                            <div class="tools">
+                                <span class="name"><i class="icon-download-pdf"></i>  <a <% if(permissionsTable['invoice_download']==1){ %>href="<%= document.downloadURL %>?inline=true" target="_blank" <% } else { %> class="disabled" <% } %> data-localize="modules.invoices.invoice">
+                                    Invoice
+                                    </a>
+                                </span>
+
+                                <% if(permissionsTable['invoice_download']==1){ %><a href="<%= document.downloadURL %>?inline=true" target="_blank"><i class="icon icon-preview"></i> <span  data-localize="general.view">View</span></a>  <a href="<%= document.downloadURL %>"><i class="icon icon-download"></i> <span data-localize="general.download">Download</span></a>
+                                <% } %>
+                            </div>
+                            <% } %>
+
+                        </div>
+                        </li>
+                        <% }) %>
+                    </ul>
+
+                    <% } else {%>
+
+
+                    <ul>
+                        <li  class="last">
+                            <div class="confirmation-download">
+                                    <span><i class="icon-download-pdf"></i>
+                                        <a <% if(permissionsTable['invoice_download']==1){ %> href="<%= invoice.downloadURL %>?inline=true" <% if(pdf_info.acrobat!=null) { %>target="_blank"<% } %> <% } else { %> class="disabled" <% } %> data-localize="modules.invoices.invoice">
+                                          Invoice
+                                        </a>
+                                    </span>
+                                <% if(pdf_info.acrobat=="installed") { %>
+                                <div class="tools">
+                                    <span class="name"><i class="icon-download-pdf"></i>  <a <% if(permissionsTable['invoice_download']==1){ %>href="<%= invoice.downloadURL %>?inline=true" target="_blank" <% } else { %> class="disabled" <% } %> data-localize="modules.invoices.invoice">Invoice</a></span>
+
+                                    <% if(permissionsTable['invoice_download']==1){ %><a href="<%= invoice.downloadURL %>?inline=true" target="_blank"><i class="icon icon-preview"></i> <span  data-localize="general.view">View</span></a>  <a href="<%= invoice.downloadURL %>"><i class="icon icon-download"></i> <span data-localize="general.download">Download</span></a>
+                                    <% } %>
+                                </div>
+                                <% } %>
+
+                            </div>
+                        </li>
+
+                    </ul>
+
+
+                    <% } %>
+
+
+                </td>
+                <% } %>
+            </tr>
+
+            <% }) %>
+        </tbody>
+    </table>
+</div>

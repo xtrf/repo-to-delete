@@ -1,0 +1,14 @@
+<div class="contact-info" data-current-value="<%= currentValue %>">
+    <div class="profile-pic pull-left">
+        <img style="width:63px;" src="<%= currentAvatar %>" onerror="setDefaultMainAvatar(this)">
+    </div>
+    <div class="details">
+        <h4 class="name contact-details"><%= currentPersonName %></h4>
+        <% if(isServiceClassic) { %>
+        <div class="actions">
+            <input type="checkbox" class="change-send-back-to"/><span data-localize="modules.quotes.send-back">Send back</span>
+        </div>
+        <% } %>
+    </div>
+    <a class="remove remove-contact-person"><i class="icon-file-remove icon"></i></a>
+</div>

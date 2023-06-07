@@ -1,0 +1,74 @@
+<%== $.View("templates/projects/projects_list_header.ejs",{}) %>
+<section class="content">
+	<table class="projects table table-striped">
+		<thead>
+			<tr>
+				<th data-localize="general.id">ID</th>
+				<th data-localize="general.name">Name</th>
+				<th data-localize="general.ref-no">Ref. No.</th>
+				<th data-localize="general.pm">Project Manager</th>
+				<th data-localize="general.start-date-and-time">Start Date And Time</th>
+				<th data-localize="general.deadline">Deadline</th>
+				<th data-localize="modules.projects.actual-delivery-date-and-time">Actual Delivery Date and Time</th>
+				<th data-localize="general.status">Status</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% $.each(this.projects, function(i, project){ %>
+			<tr>
+				<td>
+					<span style="display:none;" class="hidden-title"><strong data-localize="modules.projects.project-name">Project Name</strong>: <% if(project.name!=""){ %>
+						<%= project.name %> <% } else { %> - <% } %><br><strong data-localize="general.ref-no">Ref. No.</strong>: <% if(project.refNumber!=""){ %>
+						<%= project.refNumber %> <% } else { %> - <% } %></span>
+					<% if(permissionsTable['project_view']==1){ %><a href="#!project/<%= project.id %>" class="project-name-tooltip" rel="tooltip"><% }%>
+					<span><%= project.idNumber %></span>
+					<% if(permissionsTable['project_view']==1){ %></a><% } %>
+				</td>
+				<td>
+					<span>
+						<% if(project.name !== null && $.trim(project.name) !== "") { %>
+						<%= project.name %>
+						<% }else{ %>
+						-
+						<% } %>
+					</span>
+				</td>
+
+				<td>
+					<span><% if(project.refNumber != null && $.trim(project.refNumber)!="") { %><%= project.refNumber %> <% } else { %> - <% } %></span>
+				</td>
+
+				<td>
+					<% if(project.projectManager.name!=""){ %>
+					<%= project.projectManager.name %>
+					<% }else{ %>
+					-
+					<% } %>
+				</td>
+
+				<td><% if(project.startDate!=null){ %> <%= project.startDate.formatted %> <% } else { %> - <% } %></td>
+
+				<td><% if(project.deadline!=null){ %> <%= project.deadline.formatted %> <% } else { %> - <% } %></td>
+
+				<td><% if(project.actualDeliveryDate!=null){ %> <%= project.actualDeliveryDate.formatted %> <% } else { %> - <% } %></td>
+				<td>
+					<% if(project.status=="OPENED"){ %>
+					<span class="label label-project-open last" data-localize="modules.projects.status.opened">Opened</span>
+					<% } %>
+
+					<% if(project.status=="CANCELLED"){ %>
+					<span class="label label-project-cancelled last" data-localize="modules.projects.status.canceled">Cancelled</span>
+					<% } %>
+
+					<% if(project.status=="CLOSED"){ %>
+					<span class="label label-project-closed last" data-localize="modules.projects.status.closed">Closed</span>
+					<% } %>
+				</td>
+			</tr>
+			<% }) %>
+		</tbody>
+	</table>
+
+	<div class="pagination pagination-centered"></div>
+</section>

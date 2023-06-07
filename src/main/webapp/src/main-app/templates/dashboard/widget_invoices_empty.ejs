@@ -1,0 +1,15 @@
+<div data-status="empty" class="module module-widget-new module-invoices">
+                <header>
+                  <span><a <% if(permissionsTable['invoices_browse']==1){ %> href="#!invoices/active/1"  <% } %> data-localize="<%= localizeHeader %>">Invoices</a></span>
+                  <span class="tools">
+                    <% if(dashboards.options.IE8==false){ %> <a class="widget-detach"><i class="icon-widget-detach"><%== $.View("templates/layouts/icons/x_icon.ejs",{}) %></i></a> <% } %>
+                  </span>
+                </header>
+                <section class="content">
+               		<div class="empty-set-placeholder">
+                        <div class="active-counter">
+                        	<p data-localize="general.you-have-0-active-invoices">You have {0} active invoices</p>
+                        </div>
+                    </div>
+                </section>
+              </div>

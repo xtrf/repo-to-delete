@@ -1,0 +1,34 @@
+<div data-status="empty" class="module module-widget-new module-contact">
+                <header>
+                  <span><a data-localize="modules.contact.header" id="instant-contact-2">Contact</a></span>
+                  <span class="tools">
+                    <% if(dashboards.options.IE8==false){ %> <a class="widget-detach"><i class="icon-widget-detach"><%== $.View("templates/layouts/icons/x_icon.ejs",{}) %></i></a> <% } %>
+                  </span>
+                </header>
+                <section class="content">
+                    <div class="contact-info">
+                      <h3 data-localize="modules.contact.account-responsible">Your Account Manager</h3>
+                      <div class="profile-pic pull-left"><a user="<%= salesPerson.id %>" class="name contact-details"><img src="<%= salesPerson.avatar %>" onerror="setDefaultAvatar2(this)"></a></div>
+                      <div class="details">
+                         <a user="<%= salesPerson.id %>" class="name contact-details"><%= salesPerson.name %></a>
+                        <div class="job-title"><%= salesPerson.position %></div>
+                        <div class="actions">
+                          <a user="<%= salesPerson.id %>" class="btn btn-mini quick-message"><i class="icon-quick-message"></i> <span data-localize="modules.contact.send-message">Send message</span></a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="contact-info">
+                      <h3 data-localize="modules.contact.pm-responsible">Your Account Manager</h3>
+                      <div class="profile-pic pull-left"><a user="<%= pmResponsible.id %>" class="name contact-details"><img src="<%= pmResponsible.avatar %>" onerror="setDefaultAvatar2(this)"></a></div>
+                      <div class="details">
+                         <a user="<%= pmResponsible.id %>" class="name contact-details"><%= pmResponsible.name %></a>
+                        <div class="job-title"><%= pmResponsible.position %></div>
+                        <div class="actions">
+                          <a user="<%= pmResponsible.id %>" class="btn btn-mini quick-message"><i class="icon-quick-message"></i> <span data-localize="modules.contact.send-message">Send message</span></a>
+                        </div>
+                      </div>
+                    </div>
+
+                </section>
+              </div>

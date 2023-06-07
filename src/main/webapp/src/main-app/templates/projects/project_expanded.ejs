@@ -1,0 +1,146 @@
+<div class="content-wrapper" style="display:none;">
+  <section class="time-progress">
+    <div class="start-date"><%= project.startDate.formatted %></div>
+    <div class="progress"><div class="bar" style="width: <%= barWidth %>%" data-progress="<%= barWidth %>"></div></div>
+    <% if(project.deadline!=null){ %><div class="end-date"><%= project.deadline.formatted %></div><% } %>
+  </section>
+
+  <section class="tabs">
+    <ul class="nav nav-tabs">
+    
+      <li class="active">
+        <a class="summary-tab-link" href="javascript:void(0);"><i class="icon-summary"></i> <span data-localize="general.summary">Summary</span></a>
+      </li>
+
+		 <% if(tasksLength>0) { %>
+
+      <li>
+        <a class="tasks-tab-link" href="javascript:void(0);"><i class="icon-tasks"></i> <span data-localize="general.tasks">Tasks</span></a>
+      </li>
+	
+		<% } else { %>
+      <li class="disabled">
+        <i class="icon-tasks"></i> <span data-localize="general.no-tasks">No tasks</span>
+      </li>
+      <% } %>
+
+      <% if(project.hasInputWorkfiles || project.hasOutputFiles) { %>
+      <li>
+        <a class=" files-tab-link" href="javascript:void(0);"><i class="icon-files"></i> <span data-localize="general.files">Files</span></a>
+      </li>
+
+      <% } else { %>
+      <li class="disabled">
+        <i class="icon-files"></i> <span data-localize="general.no-files">No files</span>
+      </li>
+      <% } %>
+
+	  <% if(sessionObject.showResources !== false) { %>
+	      <% if(project.hasInputResources) { %>
+	      <li>
+	        <a class="resources-tab-link" href="javascript:void(0);"><i class="icon-resources"></i> <span data-localize="general.resources">Resources</span></a>
+	      </li>
+	
+	      <% } else { %>
+	      <li class="disabled">
+	        <i class="icon-resources"></i> <span data-localize="general.no-resources">No resources</span></li>
+	      <% } %>
+      <% } %>
+
+      <li class="pull-right">
+        <div class="btn-wrapper"></div>
+      </li>
+    </ul>
+  
+    <div class="tab-content">
+      <div class="tab-pane content-sumary">
+        <div class="project-summary">
+          <dl>
+            <% if(project.service!=null && project.service!=""){ %>
+            	<dt data-localize="modules.quotes.service">Service</dt>
+            	<dd><%= project.service %></dd>
+            <% } else if(project.workflow!=null && project.workflow!=""){ %>
+            	<dt data-localize="modules.quotes.service">Service</dt>
+            	<dd><%= project.workflow %></dd>
+            <% } %>
+
+            <% if (project.specialization){ %>
+            <dt data-localize="modules.quotes.specialization">Specialization</dt>
+            <dd><%= project.specialization %></dd>
+            <% } %>
+			<% if($.trim(project.languageCombinationsString)!="") { %>
+            <dt data-localize="general.language-pairs">Language pairs</dt>
+            <dd><%= project.languageCombinationsString %></dd>
+ 			<% } %>
+            <% if(project.deadline!=null && project.deadline.formatted!=null){ %>
+            <dt data-localize="general.deadline">Deadline</dt>
+            <dd><%= project.deadline.formatted %></dd>
+            <% } %>
+            
+            
+			<% if(typeof project.contactPersons!='undefined' && project.contactPersons!=undefined) { %>
+            <dt data-localize="general.contact-person">Contact person</dt>
+            <dd>
+             <div class="contact-info-new card">
+            <div class="profile-pic pull-left">
+              <img style="width:48px;" src="<%= project.contactPerson.avatar %>" onerror="setDefaultAvatar2(this)"/>
+            </div>
+            <div class="details">
+              <h4 class="name"><%= project.contactPersons.contactPerson.name %></h4>
+              <% if (project.contactPersons.contactPerson.id == project.contactPersons.sendBackTo.id) { %><small><i class="icon icon-send-back-to"></i> <span data-localize="general.result-files-info">Result files will be sent to this contact</span></small>
+              <% } %>
+              </div>
+            </div>
+            </dd>
+
+             <% if (project.contactPersons.contactPerson.id!=project.contactPersons.sendBackTo.id || project.contactPersons.sendBackTo.length+project.contactPersons.additionalContacts.length>0 ) { %>
+            <dt data-localize="general.additional-contacts">Additional contacts</dt>
+            <dd class="additional-contacts">
+         
+                <% if(project.contactPersons.sendBackTo.length!=0 && project.contactPersons.contactPerson.id!=project.contactPersons.sendBackTo.id) { %>
+                <div class="contact-info-new card">
+                  <div class="profile-pic pull-left">
+                    <img style="width:48px;" src="<%= project.contactPerson.avatar %>" onerror="setDefaultAvatar2(this)"/>
+                  </div>
+                  <div class="details">
+                     <h4 class="name"><%= project.contactPersons.sendBackTo.name %></h4>
+                     <small><i class="icon icon-send-back-to"></i> <span data-localize="general.result-files-info">Result files will be sent to this contact</span></small>
+                  </div>
+                </div>
+                <% } %>
+
+
+
+
+
+                <% $.each(project.contactPersons.additionalContacts, function(i, contactPerson){ %>
+                <div class="contact-info-new card">
+                  <div class="profile-pic pull-left">
+                    <img style="width:48px;" src="<%= contactPerson.avatar %>" onerror="setDefaultAvatar2(this)"/>
+                  </div>
+                  <div class="details">
+                     <h4 class="name"><%= contactPerson.name %></h4>
+                     
+                  </div>
+                </div>
+                <% }) %>
+              
+         
+            </dd>
+            <% } %>
+            <% } %>
+            
+            
+            
+            
+            
+          </dl>
+        </div>
+      </div>
+
+      <div class="tab-pane content-tasks"></div>
+      <div class="tab-pane"></div>
+      <div class="tab-pane"></div>
+    </div>
+  </section>
+</div>

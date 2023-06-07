@@ -1,0 +1,149 @@
+/************************************************************/
+/*                                                          */
+/*                                                          */
+/*                 !!!!! IMPORTANT !!!!!!!                  */
+/*                                                          */
+/*                                                          */
+/************************************************************/
+//
+// Transfer the following classes to your skin if you will change one.
+// Otherwise checkboxes/radios behave like block elements
+//
+// Also, don't forget to change image urlsif you change skin
+//
+
+[class*="icheckbox"], [class*="iradio"] {
+  display: inline-block !important;
+  vertical-align: middle;
+  margin: 0 5px !important;
+}
+
+/************************************************************/
+/*                                                          */
+/*                                                          */
+/*                !!!!! END IMPORTANT !!!!!!!               */
+/*                                                          */
+/*                                                          */
+/************************************************************/
+
+/* iCheck plugin Square skin, grey
+
+ okendoken: Go to http://damirfoy.com/iCheck/ to find more skins. There are tons of!!
+
+----------------------------------- */
+
+[class*="icheckbox_square-"], [class*="iradio_square-"] {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 22px;
+  height: 22px;
+  border: none;
+  cursor: pointer;
+}
+
+[class*="icheckbox_square-"] {
+  background-position: 0 0;
+
+  &.hover {
+    background-position: -24px 0;
+  }
+  &.checked {
+    background-position: -48px 0;
+  }
+  &.disabled {
+    background-position: -72px 0;
+    cursor: default;
+  }
+  &.checked.disabled {
+    background-position: -96px 0;
+  }
+}
+
+[class*="iradio_square-"] {
+   background-position: -120px 0px;
+
+  &.hover {
+    background-position: -144px 0;
+  }
+  &.checked {
+    background-position: -168px 0;
+  }
+  &.disabled {
+    background-position: -192px 0;
+    cursor: default;
+  }
+  &.checked.disabled {
+    background-position: -216px 0;
+  }
+}
+
+/* Retina support */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5) {
+  [class*="icheckbox_square-"], [class*="iradio_square-"] {
+    background-image: url(../images/icheck_grey@2x.png);
+    -webkit-background-size: 240px 24px;
+    background-size: 240px 24px;
+  }
+}
+
+.icheckbox_square-grey, .iradio_square-grey {
+  background-image: url(../images/icheck_grey.png);
+  background-repeat: no-repeat;
+}
+
+[class*="icheckbox_minimal-"], [class*="icheckbox_minimal-"] {
+  display: inline-block;
+  *display: inline;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  width: 18px;
+  height: 19px;
+  border: none;
+  cursor: pointer;
+}
+
+[class*="icheckbox_minimal-"] {
+  background-position: 0 0;
+
+  &.hover {
+    background-position: -20px 0;
+  }
+  &.checked {
+    background-position: -40px 0;
+  }
+  &.disabled {
+    background-position: -60px 0;
+    cursor: default;
+  }
+  &.checked.disabled {
+    background-position: -80px 0;
+  }
+}
+
+[class*="iradio_minimal-"] {
+  background-position: -100px 0;
+
+  &.hover {
+    background-position: -120px 0;
+  }
+  &.checked {
+    background-position: -140px 0;
+  }
+  &.disabled {
+    background-position: -160px 0;
+    cursor: default;
+  }
+  &.checked.disabled {
+    background-position: -180px 0;
+  }
+}
+
+.icheckbox_minimal-white, .iradio_minimal-white {
+  background-image: url(../images/icheck_minimal-white.png);
+  background-repeat: no-repeat;
+}

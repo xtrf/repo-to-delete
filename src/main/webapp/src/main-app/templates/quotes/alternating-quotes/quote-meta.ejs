@@ -1,0 +1,118 @@
+<div class="meta-wrapper">
+<div class="meta-data">
+	<div>
+		<div class="meta">
+			<% if(quote.idNumber) { %>
+			<div class="meta-row">
+				<div><span data-localize="general.id">ID</span><span data-localize="general.colon">:</span></div>
+				<div><%= quote.idNumber %></div>
+			</div>
+			<% } %>
+			<% if(quote.refNumber) { %>
+			<div class="meta-row">
+				<div><span data-localize="general.ref-no">Ref No.</span><span data-localize="general.colon">:</span></div>
+				<div><%= quote.refNumber %></div>
+			</div>
+			<% } %>
+			<% if(quote.startDate) { %>
+			<div class="meta-row">
+				<div class="ref-no"><span data-localize="general.requested-on">Requested on</span><span data-localize="general.colon">:</span></div>
+				<div class="ref-no"><%= quote.startDate.formatted %></div>
+			</div>
+			<% } %>
+			<% if(settings.budgetCodesEnabled && quote.budgetCode) { %>
+			<div class="meta-row">
+				<div class="ref-no"><span data-localize="general.budget-code">Budget Code</span><span data-localize="general.colon">:</span></div>
+				<div class="ref-no"><%= quote.budgetCode %></div>
+			</div>
+			<% } %>
+			<% if(quote.deadline) { %>
+			<div class="meta-row">
+				<div><span data-localize="modules.quotes.deadline">Deadline</span><span data-localize="general.colon">:</span></div>
+				<div><%= quote.deadline.formatted %></div>
+			</div>
+			<% } %>
+			<% if(quote.estimatedDeliveryDate && quote.estimatedDeliveryDate.formatted && (!quote.deadline || quote.estimatedDeliveryDate.formatted != quote.deadline.formatted)) { %>
+			<div class="meta-row">
+				<div><span data-localize="modules.quotes.edd">Estimated delivery date</span><span data-localize="general.colon">:</span></div>
+				<div><%= quote.estimatedDeliveryDate.formatted %></div>
+			</div>
+			<% } %>
+
+			<% if (offices.length > 1) { %>
+			<div class="meta-row office">
+				<div>
+					<span data-localize="general.office">Office</span><span data-localize="general.colon">:</span>
+				</div>
+
+				<div class="module-office">
+					<%= quote.office.name %>
+					<i class="icon-id-edit"></i>
+				</div>
+			</div>
+			<% } %>
+			<% _.each(quote.availableCustomFields, function(customField) { %>
+			<% if(customField.value) { %>
+			<div class="meta-row">
+				<div><%= customField.name %><span data-localize="general.colon">:</span></div>
+				<div><%= customField.value %></div>
+			</div>
+			<% } %>
+			<% }) %>
+		</div>
+	</div>
+</div>
+<div class="other-data">
+	<% if(quote.status !=="PENDING" && quote.status !== "REQUESTED") { %>
+		<div class="total-cost">
+			<span data-localize="general.total-cost">Total cost</span>
+			<span class="amount"><% if(isOnList && !quote.isSingleQuote && quote.showFrom) { %><span data-localize="general.from">from</span><% } %> <span><%= totalAgreed.formattedAmount %></span></span>
+		</div>
+	<% } %>
+	<div class="offer-expiry">
+		<% if(quote.expiryDate && quote.expiryDate.formatted!=null) { %>
+		<strong class="expiration-time"><span data-localize="modules.quotes.offer-expiry">Offer expiry:</span> <%= quote.expiryDate.formatted %>!</strong>
+		<% } %>
+	</div>
+	<% if(quote.autoAccept) { %>
+	<div class="auto-accepted">
+		<span class="auto-accept-info"><i class="icon-info-small"></i>
+			<span data-localize="modules.quotes.auto-accept-note">When received, the offer will be auto-accepted.</span></span>
+	</div>
+	<% } %>
+	<% if(quote.quoteConfirmationAvailable && !isOnList && (quote.status=="SENT" || quote.status=="ACCEPTED_BY_CUSTOMER" || quote.status=="ACCEPTED")) { %>
+	<div class="documents-download">
+
+		<ul>
+
+			<li>
+				<div class="confirmation-download">
+					<span>
+						<i class="icon-download-pdf"></i>
+						<a class="trigger"	href="<%= baseURL %>quotes/<%= quote.id %>/confirmation<% if(pdf_info.acrobat!=null) { %>?inline=true<% } %>"	data-localize="modules.quotes.confirmation" <% if(pdf_info.acrobat!=null) { %>target="_blank"<% } %>>Quote confirmation (PDF)</a>
+					</span>
+					<% if(pdf_info.acrobat!=null){ %>
+					<div class="tools">
+						<a href="<%= baseURL %>quotes/<%= quote.id %>/confirmation?inline=true"
+									target="_blank"><i class="icon icon-preview"></i> <span data-localize="general.view">View</span></a>
+						<a href="<%= baseURL %>quotes/<%= quote.id %>/confirmation"><i class="icon icon-download"></i> <span
+							data-localize="general.download">Download</span></a>
+					</div>
+					<% } %>
+
+				</div>
+			</li>
+		</ul>
+	</div>
+	<% } %>
+</div>
+
+
+</div>
+
+
+<% if(quote.customerNotes!=null && quote.customerNotes!=""){ %>
+<div class="alert alert-warning alert-customer-notes">
+	<div class="notes-placeholder"><%= quote.customerNotes %></div>
+</div>
+<% } %>

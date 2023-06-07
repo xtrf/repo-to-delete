@@ -1,0 +1,36 @@
+<div class="modal modal-iconic modal-customer-feedback" id="myModal" style="display:none;">
+                <div class="modal-header">
+                    <h3 data-localize="a">Customed feedback survey</h3>
+                    <div class="icon-wrapper">
+                    	<i class="icon icon-feedback"></i>
+                    </div>
+                    <button data-dismiss="modal" class="close" type="button">×</button>
+                </div>
+                
+                <div class="modal-body" data-project-id="<%= projectID %>">
+                  <div class="content">
+                    <ul class="project-survey">
+                    	<% $.each(feedbackData.customerFeedbackAnswers,function(index,question){ %>
+
+                      <li class="question" data-id="<%= question.customerFeedbackQuestion.id %>">
+                        <span><%= question.customerFeedbackQuestion.localizedName %></span>
+                        <div class="stars">
+
+                        </div>
+                      </li>
+
+                      <% }) %>
+                      
+                     
+                      <li class="comment">
+                        <label>Comments</label>
+                        <textarea></textarea>
+                      </li>
+                    </ul>
+                    <button class="btn btn-ncta btn-large survey-send">Send survey now!</button>
+
+                  </div>
+                </div>
+
+                
+            </div>

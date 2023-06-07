@@ -1,0 +1,27 @@
+.module.resources-header > header {
+  .search {
+    input {
+      border: 1px solid #e0e0e0;
+    }
+  }
+}
+
+#resources-all-list-wrapper {
+  background: #ffffff;
+  padding: 20px;
+  table {
+    th, td {
+      background: #ffffff;
+      border-bottom: #e4e4e4 1px solid;
+    }
+  }
+}
+
+#resources-table_paginate {
+  text-align: right;
+  > * {
+    float: none;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

@@ -1,0 +1,145 @@
+body.login-page{
+
+    padding-top: 0px;
+
+    #language-bar{
+        height: 71px;
+        border-bottom: 1px solid $borderLine;
+        @include box-shadow(0px 1px 0px $white);
+        @include gradient-vertical(#ffffff, #f4f5f5);
+        margin-bottom: 18px; 
+    }
+    .language-choice {
+        margin-top: 18px;
+        width:$gridColumnWidth*3+$gridGutterWidth*2;
+ 
+        .caret{
+            width: 34px;
+            height: 34px;
+            background: url(../img/icons.png) 0px -354px no-repeat;
+            border: none;
+            border-left: 1px solid $inputBorder;
+            float: right;
+            margin-top: 0px;
+            opacity: .3;
+            @include transition(opacity 200ms linear);
+            position: absolute;
+            top: 0;
+            /*margin-top: -10px;*/
+            right: 0;
+        }
+
+        &:hover{
+            .caret{
+                opacity: 1;
+                @include transition(opacity 200ms linear);
+            }
+        }
+
+        .dropdown-menu{
+            @include border-radius(0);
+            width: $gridColumnWidth*4-2;
+            margin-top: -1px;
+            border: 1px solid $inputBorder;
+            @include transition(all 200ms linear);
+            max-height: 300px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            a{
+                @include transition(background-color 200ms linear);
+                line-height: 27px;
+                font-size: 12px;
+                padding: 0px 9px;
+                margin-left: 1px;
+                margin-right: 1px;  
+
+                &:hover{
+                    @include transition(background-color 200ms linear);
+                    background: #f7f7f7;
+                    color: $grayDarkX;
+                }
+
+                
+            }
+        }
+
+        #language-choosen{
+          position: relative;
+          cursor: pointer;
+          font-size: 12px;
+          color: $grayDarkX;
+          height: 34px;
+          padding: 0px  0px 0px $basePadding ;
+          line-height: 34px;
+          border: 1px solid $inputBorder;
+          background: white;
+          @include border-radius(2px);
+        }
+    }
+
+    .company-logo{
+        width: 400px;
+        height: 50px;
+        margin: 40px auto 34px auto;
+        text-align:center;
+    }
+
+    footer.module{
+        padding: 0px 9px;
+        line-height: 54px;
+    }
+
+    .pass-recovery{
+        .alert-success{
+            color: $xLighterGray;
+        }
+    }
+}
+
+.password-hints{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    float: right; width: 300px;
+    background: lighten(#f0f0f0, 5%);
+    border: 1px solid darken(#f0f0f0, 5%);
+    padding: 5px;
+
+    >.alert{
+        background: none;
+        font-weight: normal;
+        font-size: 11px;
+        margin-bottom: 5px;
+        border-top: 1px solid darken(#f0f0f0, 5%);
+        line-height: 13px;
+        padding: 5px 5px 0px 5px;
+
+        &:first-child{
+            border-top: none;
+        }
+
+        .icon-error{
+            background:none;
+            width: 0px;
+            height: 12px;
+        }
+        .icon-success{
+            height: 12px;
+            background-position: -96px -72px;   
+        }
+    }
+}
+
+.pass-recovery .content{
+    position: relative;
+}
+.pass-recovery .password-hints{
+    position: absolute;
+    top: 30px;
+    left: 470px;
+    @include transition(all .25s ease-in);
+    @include box-shadow(0px 0px 10px rgba(0,0,0,.2));
+    border-width: 2px;
+    border-color: lighten($xLighterGray,10%);
+    opacity: 0;
+    @include border-radius(4px);
+}

@@ -1,0 +1,780 @@
+
+.module.module-report {
+  position: relative;
+  padding-bottom: 0;
+  >header{
+    border-top: none;
+    border-bottom: 1px solid $borderLine;
+    background-image: none;
+
+    h3{
+      @extend .pull-left;
+      font-weight: normal;
+      line-height: 54px;
+      vertical-align: middle;
+      font-size: $baseFontSize+4;
+    }
+
+    .report-action-edit-office {
+      padding-top: 10px;
+      cursor: pointer;
+
+      i {
+        visibility: hidden;
+      }
+
+      &:hover {
+        i {
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  .content{
+    padding: 0px;
+
+    .content-wrapper{
+      padding: 18px 9px;
+      border-top: 1px solid $borderLine;
+
+      .table-trimmer-bottom{
+          font-size: 16px;
+          text-align: center; 
+          //@include box-shadow(0 -5px 5px rgba(0,0,0,.2));
+          //border-top: 1px solid #D9D9D9;
+          padding-top: 18px;
+          padding-bottom: 9px;
+          color: $xDarkGray;
+
+        }
+      .table-wrapper{
+        position: relative;
+        .table-trimmer{
+          width: 100%;
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          height: 100%;
+          .icon-partial-table{
+                        position: absolute;
+                        top: 50%;
+                        right: 10px;
+                      }
+          &.trimmed-both{
+            background: url(../img/crop_tab.png) bottom right no-repeat;
+            
+
+            
+          }
+          &.trimmed-right{
+            
+            background: url(../img/crop_tab.png) top right no-repeat;
+          }
+          &.trimmed-bottom{
+           
+           background: url(../img/crop_tab.png) bottom left no-repeat; 
+         }
+       }
+
+
+     }
+   }
+   .action-bar{
+    @include clearfix();
+    height: 36px;
+    background: url(../img/module-header-bg.gif);
+    @include box-shadow(inset 0 2px 1px rgba(0,0,0,.05));
+    padding-left: 9px;
+    padding-right: 9px;
+
+    .field{
+      float: left;
+      line-height: 36px;
+      vertical-align: middle;
+
+      &.field-separator{
+        width: 1px;
+        height: 36px;
+        border-left: 1px solid #E6E6E6;
+        background: white;
+      }
+
+      &.field-report-preview{
+        margin-left: 9px;
+      }
+      .report-type{
+        display: block;
+        float: left;
+        margin-right: 9px;
+      }
+
+      .expand{
+        font-size: 11px;
+
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+
+      &.field-actions{
+        float: right;
+      }
+    }
+  }
+}
+
+.overlay{
+  height: 35px;
+  .loader{
+   line-height: 35px;
+ }
+}
+
+&.report-single-view header{
+  padding-left: 0;
+
+
+  .report-choice {
+    width:$gridColumnWidth*9+$gridGutterWidth*2;
+
+    .dropdown-menu {
+      width: $gridColumnWidth*9+$gridGutterWidth*2-2;
+    }
+  }
+
+  .report-office-choice {
+    width:$gridColumnWidth*3+$gridGutterWidth*2;
+
+    .dropdown-menu {
+      width: $gridColumnWidth*3+$gridGutterWidth*2-2;
+    }
+  }
+
+}
+&.report-single-view{
+  .action-bar{
+    border-bottom: 1px solid $borderLine;
+    background: url(../img/module-header-bg.gif);
+    padding: 9px;
+    overflow: hidden;
+    @include box-shadow(inset 0 2px 1px rgba(0,0,0,.05));
+    .actions .btn{
+      float: right;
+      margin-left: 9px;
+
+    }
+
+  }
+
+  .content{
+    padding: 18px 9px;
+    background: $white;
+    .nav-tabs{
+      margin: 0px;
+      border: none;
+
+      >li{
+        border: none;
+        width: 54px;
+        height: 54px;
+        margin-bottom: 5px;
+        
+
+        >a{
+          display: block;
+          width: 24px;
+          height: 24px;
+          padding:15px;
+          min-width: 24px;
+          @include border-radius(0px);
+          border:1px solid $borderLine;
+          border-right: none;
+
+          >i{
+            width: 24px;
+            height: 24px;
+          }
+        }
+
+        &.active{
+          >a{
+            background: #f3f3f3;
+            border-color: #f3f3f3;
+          }
+        }
+      }
+
+    }
+    .tab-pane{
+      background: #f3f3f3;
+      padding: 9px;
+      border: none;
+ 
+     #table-wrapper{
+       height: 512px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .scroll-barV {
+        position:absolute;
+        z-index:100;
+        width:9px;bottom:10px;top:2px;right:1px;
+      
+      }
+
+      .scroll-barV > div {
+        position:absolute;
+        z-index:100;
+        width:100%;
+        
+        background: #535353 url(../img/scroll-handler-v.png) center center no-repeat;
+          opacity:.7;
+        
+        
+      }
+      .scroll-barH {
+        position:absolute;
+        z-index:100;
+        height:9px;bottom:1px;left:2px;right:10px;
+      
+      }
+
+      .scroll-barH > div {
+        position:absolute;
+        z-index:100;
+        height:100%;
+        opacity:.7;
+        background: #535353 url(../img/scroll-handler-h.png) center center no-repeat;
+      }
+    }
+  }
+}
+}
+
+
+.module.module-report.expanded{
+  .action-bar{
+    border-bottom: 1px solid $white;
+  }
+
+  .overlay{
+    top: 55px;
+  }
+}
+
+
+.rf-dt{
+  border-spacing: 0;
+  margin-bottom: 0px;
+  
+  tr th{border-left:1px solid $white;}
+  tr th:first-child{border-left:none;}
+  tr td{border-top:1px solid #f3f3f3;border-left:1px solid #f3f3f3;vertical-align:middle;}
+  tr td:first-child{border-left:0;}
+  tr:first-child td{border-top:0;}
+
+  tr.faded-out td, td.faded-out, th.faded-out{
+    @include opacity(50);
+  }
+
+  .xtrf-financial-report-summary{
+    text-align: center;
+
+  }
+
+  tbody{
+    tr:nth-child(even) td.xtrf-financial-report-footer,
+    .xtrf-financial-report-footer{
+      font-weight: bold;
+      background: #e3e3e3;
+      text-align: center;
+      color: $xDarkGray;
+    }
+
+    tr:nth-child(even) td.xtrf-financial-report-header,
+    .xtrf-financial-report-header{
+      font-weight: bold;
+      background: #fafafa;
+    }
+
+    .xtrf-financial-report-header-main>td, .xtrf-financial-report-header-main>td.rf-dt-hdr-c, tr.xtrf-financial-report-header-main:nth-child(even) td.rf-dt-hdr-c{
+    /* font-weight: bold;
+     text-shadow: 0px 1px 1px rgba(255,255,255,.75);
+     color: $xDarkGray;
+     background:@tableHeadBackground;
+     padding: 6px 21px 6px 9px;*/
+
+     &.multi-cols-wrapper{
+      text-align: center;
+    }
+
+    &:first-child{
+      
+    }
+    &:not([rowspan]){
+      border-left: 1px solid #F3F3F3;
+    }
+
+  }
+  .xtrf-financial-report-header-main>td.multi-cols-wrapper-sub-header{
+      text-align: center; 
+    }
+  .xtrf-financial-report-footer-main td, .xtrf-financial-report-footer-main td.xtrf-financial-report-footer, .xtrf-financial-report-footer-main:nth-child(even) td.xtrf-financial-report-footer{
+    
+    font-weight: bold;
+    
+    color: #467F97;
+    border-top: 1px solid #E6E6E6;
+    @include box-shadow(inset 0 2px 1px rgba(0,0,0,.05));
+    background: #fff url(../img/module-header-bg.gif);
+    &.table-footer-label{
+      text-align: right;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: $xLighterGray;
+    }
+  }
+   tr.xtrf-financial-report-footer-main td.xtrf-financial-report-footer{
+    text-align: left;
+  }
+  tr.xtrf-financial-report-footer-main td.xtrf-financial-report-footer:last-child{
+    text-align: center;
+  }
+}
+
+  tbody tr.xtrf-financial-report-body:hover td{
+    @include gradient-vertical(lighten($tableHeadBackground, 7%), lighten($tableHeadBackground, 5%));
+    /*.transition(background 100ms linear);*/
+    font-weight: bold;
+    color: $xDarkGray;
+  }
+
+}
+
+.module.module-report.collapsed.unavailable{
+  .overlay{
+    color: $xRed;
+    line-height: 90px;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:after {
+      content: '\d7';
+      font-size: 20px;
+      line-height: 20px;
+      color: #000;
+      position: absolute;
+      top: 5px;
+      right: 10px;
+    }
+  }
+}
+
+.module.module-report.report-single-view .tab-pane.module-empty {
+ 
+  .note-error{
+
+     margin-top: 0px;
+ 
+  height: 244px;
+ 
+  background: #fff url(../img/empty-reports.jpg) bottom left no-repeat;
+
+    >span{
+         padding-top: 104px;
+       font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      display: block;
+    }
+  }
+}
+
+
+.module.module-report.module-projects-summary, .module.module-report.module-quotes-summary{
+  .content{
+    padding: 9px;
+    display: block;
+
+    &:hover{
+      text-decoration:none;
+    }
+  }
+}
+.module.module-report.module-quotes-summary{
+  .active-quotes{
+    background: $xLighterGray;
+    padding: 6px;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: $white;
+  }
+
+  .waiting-quotes{
+    height: 63px;
+    clear: both;
+    color: #ffa36c;
+    font-size: 16px;
+    text-transform: uppercase;
+    line-height: 63px;
+    padding-left: 9px;
+    >strong{
+      vertical-align: middle;
+      font-size: 50px;
+      font-weight: normal;
+    }
+  }
+}
+
+.module.module-report.module-projects-summary{
+    .open-projects{
+      background: #a5ccd9;
+      height: 63px;
+      clear: both;
+      color: $white;
+      font-size: 16px;
+      text-transform: uppercase;
+      line-height: 63px;
+      padding-left: 9px;
+      >strong{
+        vertical-align: middle;
+        font-size: 50px;
+        font-weight: normal;
+      }
+    }
+
+    .total-agreed{
+      background: $xLighterGray;
+      padding: 6px;
+      font-size: 16px;
+      text-transform: uppercase;
+     color: $white;
+     display: inline-block;
+     @include ie7-inline-block();
+    }
+  }
+
+
+  .module.module-report.module-invoices-summary{
+    .value{
+      margin: 9px 0px 9px 9px;
+      padding: 6px;
+      background: $xLighterGray;
+      text-transform: uppercase;
+      font-size: 14px;
+      color: $white;
+    }
+
+    .due-date{
+      font-size: 14px;
+      margin: 9px 9px 9px 0px;
+      text-transform: uppercase;
+      padding: 6px;
+    }
+  }
+
+
+  body.report-print-view{
+    background: #d8d8d8 url(../img/body.png) top left repeat-x fixed;
+
+    .container{
+      width: 870px;
+    }
+    #main-header{
+      background: $white;
+      padding: 9px 0px;
+      margin-top: 0px;
+      clear: both;
+      overflow: hidden;
+      border-bottom: 1px solid #e6e6e6;
+      .container>*{
+        float: left;
+      }
+      .logo{
+        display: block;
+        border-right: 1px dashed #e6e6e6;
+        padding-right: 27px;
+        margin-right: 27px;
+      }
+      h1{
+        font-size: 20px;
+        color: $xDarkGray;
+        display: block;
+        font-weight: normal;
+        padding-top: 9px;
+      }
+    }
+
+    #sub-header{
+      padding-top: 9px;
+      padding-bottom: 9px;
+      background: url(../img/module-header-bg.gif);
+      @include box-shadow(inset 0 2px 1px rgba(0,0,0,.05));
+      border-bottom: 1px solid #e6e6e6;
+
+      .actions{
+        float:right;
+        >*{
+          float: left;
+        }
+
+        label{
+          color: $xBlue;
+          margin-right: 27px;
+          margin-top: 9px;
+          color: $primaryLink;
+        }
+      }
+    }
+
+    .content{
+      padding: 27px 18px;
+      header{
+        padding-bottom: 18px;
+        margin-bottom: 18px;
+        border-bottom: 1px solid $borderLine;
+        overflow: hidden;
+        clear: both;
+        .title{
+          width: 600px;
+        }
+        h2{
+          color: $xRed;
+          font-size: 26px;
+          font-weight: normal;  
+        }
+        h3{
+          strong{
+            text-transform: uppercase;
+          }
+          font-size: 14px;
+          font-weight:normal;
+          color: $xDarkGray;
+        }
+      }
+      .chart-section{
+        >div{
+          margin: 0 auto;
+        }
+        overflow:hidden;
+        margin-bottom: 36px;
+      }
+      .table-section{
+
+        overflow: auto;
+      }
+      footer{
+        margin-top: 18px;
+        padding-top: 9px;
+        font-size: 11px;
+        border-top: 1px solid #e6e6e6;
+        span{
+          display: block;
+          float: left;
+        }
+        .logo{
+          
+          float: right;
+        }
+      }
+    }
+  }
+
+  body.report-print-view.sticky-bar{
+    #main-header{
+      margin-bottom: 55px;
+    }
+    #sub-header{
+        position: fixed;
+        top: 0px;
+        width: 100%;
+        z-index: 1000;
+        @include box-shadow(0 2px 1px rgba(0,0,0,.05));
+      }
+
+  }
+
+  #clipboard-copy.hover{
+    font-size: 11px;
+    background-color: #aad0dc;
+    background-image: -moz-linear-gradient(top, #b8d8e2, #94c4d4);
+    background-image: -ms-linear-gradient(top, #b8d8e2, #94c4d4);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#b8d8e2), to(#94c4d4));
+    background-image: -webkit-linear-gradient(top, #b8d8e2, #94c4d4);
+    background-image: -o-linear-gradient(top, #b8d8e2, #94c4d4);
+    background-image: linear-gradient(top, #b8d8e2, #94c4d4);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b8d8e2', endColorstr='#94c4d4', GradientType=0);
+  }
+
+  .jspPane .xtrf-financial-report-table{
+    margin-bottom: 0px;
+  }
+
+  .reports-list .empty-set-placeholder .active-counter .counter{ 
+    border-right: none;
+  }
+
+
+
+
+/*
+ * CSS Styles that are needed by jScrollPane for it to operate correctly.
+ *
+ * Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane
+ * may not operate correctly without them.
+ */
+.jspContainer
+{
+  overflow: hidden;
+  position: relative;
+}
+
+.jspPane
+{
+  position: absolute;
+}
+
+.jspVerticalBar
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 16px;
+  height: 100%;
+
+  opacity: 0.5;
+  -webkit-transition: opacity 100ms linear;
+    -moz-transition: opacity 100ms linear;
+    -ms-transition: opacity 100ms linear;
+    -o-transition: opacity 100ms linear;
+    transition: opacity 100ms linear;
+  
+}
+
+.jspHorizontalBar
+{
+  position: absolute;
+  bottom: 18px ;
+  left: 0;
+  width: 100%;
+  height: 16px;
+
+  opacity: 0.5;
+  -webkit-transition: opacity 100ms linear;
+    -moz-transition: opacity 100ms linear;
+    -ms-transition: opacity 100ms linear;
+    -o-transition: opacity 100ms linear;
+    transition: opacity 100ms linear;
+  
+}
+
+.jspVerticalBar *,
+.jspHorizontalBar *
+{
+  margin: 0;
+  padding: 0;
+}
+
+.jspCap
+{
+  display: none;
+}
+
+.jspHorizontalBar .jspCap
+{
+  float: left;
+}
+
+.jspTrack
+{
+  
+  position: relative;
+}
+
+.jspDrag
+{
+  background: #535353;
+  position: relative;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.jspHorizontalBar .jspTrack,
+.jspHorizontalBar .jspDrag
+{
+  float: left;
+  height: 100%;
+}
+
+.jspArrow
+{
+  background: #50506d;
+  text-indent: -20000px;
+  display: block;
+  cursor: pointer;
+}
+
+.jspArrow.jspDisabled
+{
+  cursor: default;
+  background: #80808d;
+}
+
+.jspVerticalBar .jspArrow
+{
+  height: 16px;
+}
+
+.jspHorizontalBar .jspArrow
+{
+  width: 16px;
+  float: left;
+  height: 100%;
+}
+
+.jspVerticalBar .jspArrow:focus
+{
+  outline: none;
+}
+
+.jspCorner
+{
+    
+  float: left;
+  height: 100%;
+}
+
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner
+{
+  margin: 0 -3px 0 0;
+}
+
+.jspVerticalBar .jspDrag{
+  background: #535353 url(../img/scroll-handler-v.png) center center no-repeat;
+}
+
+.jspHorizontalBar .jspDrag{
+  background: #535353 url(../img/scroll-handler-h.png) center center no-repeat;
+}
+
+.jspContainer:hover .jspVerticalBar, .jspContainer:hover .jspHorizontalBar{
+  opacity: 1;
+  -webkit-transition: opacity 100ms linear;
+    -moz-transition: opacity 100ms linear;
+    -ms-transition: opacity 100ms linear;
+    -o-transition: opacity 100ms linear;
+    transition: opacity 100ms linear;
+} 
+.jspPane{
+    
+}
+
+
+.lt-ie9 .rf-dt,.ie9 .rf-dt{
+  border-spacing: 1px;
+}

@@ -1,0 +1,134 @@
+<div class="modal-body" style="">
+    <div class="content">
+        <div class="uploader-accordion">
+            <div class="uploader-group" id="source-files">
+                <header>
+                    <a class="accordion-toggle" data-toggle="collapse" >
+                        <i class="icon-collapse"></i> <span data-localize="general.source-files">Source files</span></a>
+                </header>
+                <div class="uplader-errors-container"></div>
+                <form id="fileupload" action="" method="POST" enctype="multipart/form-data">
+                    <div id="source-files-container" class="accordion-body" style="height: auto; ">
+                        <div class="uploader-wrapper">
+
+                            <div class="upload-button-wrapper">
+                                <strong data-localize="general.or">or</strong>
+                                <br/>
+                                <a class="btn btn-large btn-cta btn-choose fileinput-button">
+                                    <span data-localize="modules.quotes.choose-files-to-upload">Choose files to upload</span>
+                                    <input type="file" name="files[]" multiple>
+                                </a>
+                            </div>
+                            <ul class="uploaded-files-list">
+
+                            </ul>
+                            <div id="paste-from-clipboard" style="display:none;">
+
+
+                                <textarea style="" id="paste-area" name="paste-area"></textarea>
+
+
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="info-overlay" style="width:630px">
+                            <h4><i class="icon-add-dnd"></i> <span data-localize="modules.quotes.drag-and-drop-files">Drag and drop files here to upload</span></h4>
+                        </div>
+
+                        <div class="actions">
+                            <a class="link-btn btn btn-upload-v" id="paste-expand"><i class="icon-add-text-clipboard"></i> <span data-localize="modules.quotes.add-text-from-clipboard">Add text from clipboard</span></a>
+                            <a class="link-btn btn fileinput-button btn-upload-v"><i class="icon-add-files"></i>
+                                <input type="file" name="files[]" multiple>
+                                <span data-localize="general.add-files">Add files</span>
+
+                            </a>
+
+                            <a class="link-btn btn btn-paste-v" style="display:none;" id="cancel-paste-button" data-localize="general.cancel">Cancel</a>
+                            <a class="link-btn btn btn-paste btn-paste-v" style="display:none;" id="paste-button" data-localize="general.add-text">Add text</a>
+                            <div class="loader" style="display:none;"></div>
+
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+            <a class="link-primary add-ref-materials">+ <span data-localize="modules.quotes.add-reference-materials">Add reference materials</span></a>
+
+
+
+
+
+        </div>
+
+
+        <div class="uploader-accordion" style="display:none;" id="reference-accordion">
+            <div class="uploader-group" id="reference-materials">
+                <header>
+                    <a class="accordion-toggle" data-toggle="collapse" >
+                        <i class="icon-collapse"></i> <span data-localize="general.reference-materials">Reference materials</span>
+
+                    </a>
+                </header>
+                <div class="uplader-errors-container"></div>
+                <form id="fileupload2" action="" method="POST" enctype="multipart/form-data">
+                    <div id="reference-materials-container" class="accordion-body" style="height: auto; ">
+                        <div class="uploader-wrapper">
+
+                            <div class="upload-button-wrapper"><strong data-localize="general.or">or</strong><br> <a class="btn btn-large btn-cta btn-choose fileinput-button"><span data-localize="modules.quotes.choose-files-to-upload">Choose files to upload</span>
+                                <input type="file" name="files[]" multiple>
+                            </a></div>
+                            <ul class="uploaded-files-list">
+
+                            </ul>
+
+                        </div>
+                        <div class="info-overlay" style="width:630px">
+                            <h4><i class="icon-add-dnd"></i>  <span data-localize="modules.quotes.drag-and-drop-files">Drag and drop files here to upload</span>
+                            </h4>
+                        </div>
+                        <div class="actions">
+
+                            <a class="link-btn btn fileinput-button"><i class="icon-add-files"></i>
+
+                                <span data-localize="general.add-files">Add files</span>
+                                <input type="file" name="files[]" multiple>
+                            </a>
+                            <div class="loader" style=" display:none;"></div>
+
+
+
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+</div>
+
+</div>
+<div class="modal-footer">
+    <a class="link-return pull-left" href="javascript:void(0);"><i class="icon-return"></i> <span data-localize="general.basic-info">Basic information</span></a>
+
+
+    <a class="link-primary btn-next-2" data-localize="modules.quotes.no-files-continue">Continue without files</a>
+    <% if(sessionObject.showFileStats !== false) { %>
+    <a class="btn btn-cta next-step btn-large disabled"><span data-localize="general.estimations">Estimations</span> <i class="icon-next-step"></i></a>
+    <% } else { %>
+    <a class="btn btn-cta next-step btn-large disabled"><span data-localize="general.summary">Summary</span> <i class="icon-next-step"></i></a>
+    <% } %>
+</div>

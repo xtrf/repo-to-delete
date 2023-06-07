@@ -1,0 +1,11 @@
+.module-office {
+  cursor: pointer;
+
+  i {
+    visibility: hidden;
+  }
+
+  &:hover i {
+    visibility: visible;
+  }
+}

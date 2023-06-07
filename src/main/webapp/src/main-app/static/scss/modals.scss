@@ -1,0 +1,306 @@
+// MODALS
+// ------  
+
+// Recalculate z-index where appropriate
+.modal-open {
+  .dropdown-menu {  z-index: $zindexDropdown + $zindexModal; }
+  .dropdown.open { *z-index: $zindexDropdown + $zindexModal; }
+  .popover       {  z-index: $zindexPopover  + $zindexModal; }
+  .tooltip       {  z-index: $zindexTooltip  + $zindexModal; }
+}
+
+// Background
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $zindexModalBackdrop;
+  background-color: black;
+  // Fade for backdrop
+  &.fade { opacity: 0; }
+}
+
+.modal-backdrop,
+.modal-backdrop.fade.in {
+  @include opacity(60);
+}
+
+// Base modal
+.modal {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  z-index: $zindexModal;
+  overflow: auto;
+  width: 570px;
+  margin: -0px 0 0 -280px;
+  background-color: $white;
+  @include border-radius(2px);
+  @include box-shadow(0 3px 7px rgba(0,0,0,0.3));
+  @include background-clip(padding-box);
+  font-size: 1.2rem;
+  behavior: url(../pie.htc);
+  &.fade {
+    top: -25%;
+  }
+  &.fade.in { top:30%; }
+  &.modal-fixed-top{
+    top: -25%;
+  }
+  &.modal-fixed-top.in{
+    @include transition(e('opacity .3s linear, top .3s ease-out'));
+    top: 0px;
+    margin-top: 0px;
+  }
+}
+.modal-header {
+  padding: 14px 9px;
+  border-bottom: 1px solid $borderLine;
+  border-top: 2px solid $xRed;
+  background: url(../img/module-header-bg.gif);
+  // Close icon
+  .close {
+    margin-top: 4px;
+    color: $xLighterGray;
+
+    text-shadow: none;
+    span{
+      color: $xLighterGray;
+    }
+  }
+
+  h3{
+    font-size: 20px;
+    font-weight: normal;
+    color: $xRed;
+  }
+}
+
+.modal.modal-fixed-top .modal-header{
+  border-top: none;
+  background: none;
+  h3{
+    color: $customerComponentsFont;
+  }
+
+  .close{
+    font-size: 30px;
+    color: $customerComponentsFont;
+    outline: none;
+    span{
+      font-size: 12px;
+      text-transform: uppercase;
+      display: none;
+      color: $customerComponentsFont;
+    }
+  }
+
+}
+
+// Body (where all modal content resides)
+.modal-body {
+  overflow-y: auto;
+  padding: 15px;
+  background: #f3f3f3;
+}
+// Remove bottom margin if need be
+.modal-form {
+  margin-bottom: 0;
+}
+
+// Footer (for actions)
+.modal-footer {
+  padding: 9px 30px;
+  margin-bottom: 0;
+  text-align: right; // right align buttons
+  background: $white url(../img/module-header-bg.gif);
+  border-top: 1px solid #ddd;
+  @include border-radius(0 0 6px 6px);
+  @include box-shadow(inset 0 1px 0 $white);
+  @include clearfix(); // clear it in case folks use .pull-* classes on buttons
+
+  // Properly space out buttons
+  .btn + .btn {
+    margin-left: 5px;
+    margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+  }
+  // but override that for button groups
+  .btn-group .btn + .btn {
+    margin-left: -1px;
+  }
+
+  .link-return{
+    line-height: 36px;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 36px;
+    margin-left: -8px;
+  }
+}
+
+
+
+
+
+.modal.modal-process{
+  width: 690px;
+  @include border-radius(0 0 2px 2px);
+  margin-left: -345px;
+  .modal-header{
+    background-color: $customerComponentsTabs;
+    background-repeat: repeat-x;
+    color: $white;
+    border-bottom: 1px solid $customerComponentsTabs;
+    padding: 20px 30px;
+
+    >h3{
+      font-size: 28px;
+      font-weight: normal;
+    }
+  }
+
+  .modal-step-indicator{
+    padding: 18px 0px;
+    background: $white url(../img/module-header-bg.gif);
+    border-bottom: 1px solid $borderLine;
+    width: 690px;
+    @include box-shadow(inset 0px 2px 2px rgba(0,0,0,.2));
+    @include clearfix();
+    ul{
+      padding: 0px;
+      margin: 0px;
+    }
+    li{
+      display: table;
+      float: left;
+      width: 172px;
+      height: 34px;
+      line-height: 14px;
+      text-align: center;
+      color: $white;
+      text-transform: uppercase;
+      font-weight: bold;
+
+
+      >span{
+        display: table-cell;
+        vertical-align: middle;
+        background: #d1d1d1;
+        width:100%;
+      }
+      &.active{
+        >span{
+          background: #a5ccd9;
+        }
+      }
+      &:before,&:after{
+        background: url(../img/icons.png) 1000px 1000px no-repeat;
+        float: left;
+        display: table-cell;
+        content:'';
+        height: 34px;
+        width:10px;
+      }
+
+      &.step1{
+        width:173px;
+        &:after{
+          background-position: -163px -523px;
+        }
+        &.active{
+          &:after{
+            background-position: -163px -557px;
+          }
+        }
+        &:before{
+          content:none;
+        }
+      }
+      &.step2, &.step3{
+        &:before{
+          background-position: 0px -591px;
+        }
+        &:after{
+          background-position: -163px -523px;
+        }
+        &.active{
+          &:before{
+            background-position: 0px -625px;
+          }
+          &:after{
+            background-position: -163px -557px;
+          }
+        }
+      }
+      &.step4{
+        width:173px;
+        &:before{
+          background-position: 0px -591px;
+        }
+        &.active{
+          &:before{
+            background-position: 0px -625px;
+          }
+        }
+        &:after{
+          content:none;
+        }
+
+      }
+
+    }
+
+    &.three-step{
+      li{
+        width:230px;
+      }
+    }
+
+  }
+}
+
+.modal.modal-error{
+  position: fixed;
+  top: 20%;
+  text-align: center;
+  color: $xRed;
+  width: auto;
+  @include border-radius(4px);
+  h4{
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 1.5em;
+    text-shadow: 1px 1px 1px white;
+    border-bottom: 1px solid darken(white, 15%);
+    @include box-shadow(0px 1px 0px darken(white, 1%));
+    padding-bottom: 9px;
+    margin-bottom: 18px;
+    >strong{
+      color: $xDarkGray;
+      font-size: 14px;
+    }
+  }
+
+  .modal-body{
+    @include gradient-vertical(darken(#ededed,1%), #f5f5f5);
+    border: 1px solid #f5f5f5;
+    .btn-small{
+      font-size: 13px;
+    }
+  }
+}
+
+.modal.modal-confirmation{
+
+  .modal-body{
+    background-color: white;
+  }
+  text-align: center;
+
+  border: 1px solid $borderLine;
+  color: #ffa36c;
+} 

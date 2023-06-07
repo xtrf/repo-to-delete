@@ -1,0 +1,73 @@
+<div class="module module-quote module-single-view quote-accepted"
+					quoteID="<%= quote.idNumber %>"
+					quoteID2="<%= quote.id %>"
+					quote-status="<%= quote.status %>"
+					quote-agreed="<%= quote.totalAgreed.formattedAmount %>">
+	<div class="content">
+		<section class="status-information">
+			<div class="content">
+				<div class="field field-accepted last">
+					<% if(quote.autoAccept) { %>
+					<span data-localize="modules.quotes.auto-accept-info">This quote was auto-accepted.</span>
+					<% }else if(quote.accepter != null && typeof quote.accepter.you != 'undefined'){ %>
+					<span data-localize="modules.quotes.accept-info-user">This quote was accepted by you.</span>
+					<% }else if(quote.accepter != null && quote.accepter.type=="CustomerPerson"){ %>
+					<span><span data-localize="modules.quotes.accepted-person-info">This quote was accepted by</span> <%= quote.accepter.name %></span>
+					<% }else{ %>
+					<span data-localize="modules.quotes.accept-info">This quote has been accepted.</span>
+					<% } %>
+				</div>
+
+			</div>
+		</section>
+		<div class="content-wrapper">
+
+			<section class="tabs">
+				<ul class="nav nav-tabs" id="myTab">
+					<li class="active"><a tab="tasks"><i class="icon-tasks"></i> <span data-localize="general.tasks">Tasks</span></a>
+					</li>
+
+
+					<% if(quote.hasInputWorkfiles) { %>
+					<li class="active"><a class="files-tab-link" tab="files"><i class="icon-files"></i>
+						<span data-localize="general.files">Files</span></a></li>
+					<% }else { %>
+					<li class="disabled"><i class="icon-files"></i> <span data-localize="general.no-files">No files</span></li>
+					<% } %>
+
+					<% if(sessionObject.showResources !== false) { %>
+					<% if(quote.hasInputResources) { %>
+					<li
+					<% if(!quote.hasInputWorkfiles) { %> class="active" <% } %>><a class="files-tab-link"
+																																																																				tab="resources"><i class="icon-files"></i> <span
+					data-localize="general.resources">Resources</span></a></li>
+
+					<% } else { %>
+					<li class="disabled"><i class="icon-resources"></i> <span data-localize="general.no-resources">No resources</span>
+					</li>
+					<% } %>
+					<% } %>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active content-tasks">
+
+					</div>
+					<div class="tab-pane content-files">
+
+					</div>
+
+					<div class="tab-pane content-resources">
+
+					</div>
+
+				</div>
+
+			</section>
+
+
+		</div>
+
+	</div>
+
+
+</div>

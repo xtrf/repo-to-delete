@@ -1,0 +1,11 @@
+<label class="control-label" for="select-tos" data-localize="modules.quotes.service">Service</label>
+
+
+<div class="controls">
+ <select id="select-tos" class="chosen-process is--required" data-placeholder="Select Service" data-localize-2="modules.quotes.input-quote-select-service">
+  <option></option>
+     <% $.each(this.services.sort(function(a,b) {return a.localizedName.localeCompare(b.localizedName);}), function(i, service){ %>
+  <option value="<%= service.name %>"><%= service.localizedName %></option>
+     <% }) %>
+ </select>
+</div>

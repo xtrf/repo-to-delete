@@ -1,0 +1,28 @@
+// UTILITY CLASSES
+// ---------------
+
+// Quick floats
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
+
+// Toggling content
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+
+// Visibility
+.invisible {
+  visibility: hidden;
+}
+
+// IE 6-9 CSS3 features enable
+.ie-enable{
+    behavior: url('../pie.htc');
+}

@@ -1,0 +1,63 @@
+<div class="modal modal-iconic leave-feedback-modal" id="myModal" >
+	<div class="modal-header">
+		<h3 data-localize="modules.projects.leave-feedback.modal.title">Leave Feedback</h3>
+		<button data-dismiss="modal" class="close" type="button"><i class="icon icon-modal-close"></i></button>
+	</div>
+
+	<div class="modal-body">
+		<div class="content">
+			<div class="form-horizontal">
+				<div class="control-group">
+					<label data-localize="modules.projects.leave-feedback.modal.project" class="control-label">Project</label>
+					<div class="controls project-id"><%= projectId %> <%= projectName %></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label single-input-label required-field"><span data-localize="modules.projects.leave-feedback.modal.feedback-type">Feedback Type</span></label>
+
+					<div class="controls">
+
+						<select class="chosen-process" data-placeholder="Select feedback type" data-localize-2="modules.projects.leave-feedback.modal.select-feedback-type" id="feedback-type">
+							<option></option>
+							<option value="CUSTOMER_APPROVAL" data-localize="modules.projects.leave-feedback.type.approval">Approval</option>
+							<option value="CUSTOMER_CLAIM" data-localize="modules.projects.leave-feedback.type.claim">Complaint</option>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label data-localize="modules.projects.leave-feedback.modal.target-languages" class="control-label multi-input-label">Target Language(s)</label>
+						<div class="controls">
+						<select multiple="multiple"
+						        id="target-languages"
+						        class="chosen-process"
+						        data-placeholder="Select target language(s)"
+						        data-localize-2="modules.projects.leave-feedback.modal.select-target-languages">
+							<option></option>
+							<% $.each(this.targetLanguages, function(i, language){ %>
+							<option data-name="<%= language.name %>" value="<%= language.id %>"><%= language.displayName %></option>
+							<% }) %>
+						</select>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label single-input-label required-field"><span data-localize="modules.projects.leave-feedback.modal.description">Description</span></label>
+
+					<div class="controls">
+						<textarea id="description" rows="5"></textarea>
+					</div>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+						<a data-localize="modules.projects.leave-feedback.modal.add" id="send-feedback" class="btn btn-cta btn-large">Add</a>
+						<a class="btn-cancel" data-dismiss="modal" data-localize="general.cancel">Cancel</a>
+					</div>
+				</div>
+
+				<span data-localize="general.fields-required" class="required-fields-hint">fields required</span>
+			</div>
+
+		</div>
+	</div>
+
+
+</div>

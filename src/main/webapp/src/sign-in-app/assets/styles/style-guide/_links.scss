@@ -1,0 +1,31 @@
+$link-default-color: #3b3b3b;
+$link-default-hover-color: #222222;
+$link-default-active-color: #222222;
+$link-default-disabled-color: #c2c2c2;
+$link-default-border-bottom: 1px dashed rgba(0, 0, 0, 0.4);
+$link-default-hover-border-bottom: 1px solid #222222;
+$link-default-disabled-border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+$link-default-underline-color: rgba(0,0,0,.4);
+
+.link {
+	color: $link-default-color;
+	border-bottom: 1px dashed rgba(0, 0, 0, 0.4);
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.link:hover,.link:focus {
+	color: $link-default-hover-color;
+	border-bottom: 1px solid $link-default-hover-color;
+	text-decoration: none;
+}
+
+.link:active {
+	color: $link-default-active-color;
+	border-bottom: 1px solid $link-default-active-color;
+}
+
+.link:disabled {
+	color: $link-default-disabled-color;
+	border-bottom: 1px dashed $link-default-disabled-color;
+}

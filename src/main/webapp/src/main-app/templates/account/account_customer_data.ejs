@@ -1,0 +1,30 @@
+<div class="control-group">
+	                                        <div class="control-label" data-localize="modules.my-account.phones">Phones</div>
+	                                    
+	                                        
+	                                        <% $.each(this.contactData.contact.phones, function(i, phone){ %>
+	                                        <div class="controls phone-controls">
+	                                            <div class="phone-number">
+	                                                <input type="text" class="phone-number-input partner-data" value="<%= phone %>" id="phone-<%= i %>"/>
+	                                                  <% if(contactData.contact.phonesSMS[i]==1){ %>
+									                    <button class="sms-enable btn btn-mini active partner-data" data-toggle="button"><i class="icon-accept"></i> <span data-localize="general.sms-enabled">SMS enabled</span></button>
+									                    <% }else{ %>
+									                    <button class="sms-enable btn  btn-mini partner-data" data-toggle="button"><span data-localize="general.sms-enable">Enable SMS</span></button>
+									                    <% } %>
+	                                                <a class="item-remove"><i class="icon-file-remove"></i></a>
+	                                           </div>
+	                                        </div>
+	                                        
+	                                        <% }) %>
+	                                        <div class="controls" <% if(this.contactData.contact.phones.length>=3) { %> style="display:none;" <% } %>>
+	                                        	
+	                                           <a class="add-more" add="phone">+ <span data-localize="modules.my-account.add-phone-number">Add phone number</span></a>
+	                                        </div>
+	                                    </div>
+	                                    <div class="control-group">
+	                                        <div class="control-label" data-localize="modules.my-account.fax">Fax</div>
+	                                        
+	                                        <div class="controls">
+	                                            <input type="text" value="<%= contactData.contact.fax %>" id="mp-fax" class="partner-data"/>
+	                                        </div>
+	                                    </div>

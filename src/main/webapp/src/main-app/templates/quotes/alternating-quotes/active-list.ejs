@@ -1,0 +1,30 @@
+<% $.each(this.alternatingQuotesList, function(i, quote){ %>
+<div class="module module-quote module-alternating-quote" quoteID="<%= quote.idNumber %>" quoteID2="<%= quote.id %>">
+	<header>
+		<h3>
+			<span>
+				<a href="#!quote/<%= quote.id %>" title="<%= quote.name %>">
+					<span class="quote-name">
+						<%== $.View("templates/quotes/alternating-quotes/quote-name.ejs", {quote:quote}) %>
+					</span>
+				</a>
+			</span>
+		</h3>
+
+		<aside>
+			<%== $.View("templates/quotes/alternating-quotes/quote-status.ejs", {quote:quote}) %>
+		</aside>
+
+	</header>
+	<div class="content quote-in-aq">
+		<%== $.View("templates/quotes/alternating-quotes/quote-meta.ejs", {
+			quote: quote,
+			offices: offices,
+			totalAgreed: quote.minimalTotalAgreed,
+			isOnList: true
+		}) %>
+	</div>
+
+</div>
+
+<% }) %>

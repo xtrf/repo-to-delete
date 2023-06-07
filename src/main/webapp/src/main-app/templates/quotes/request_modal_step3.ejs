@@ -1,0 +1,43 @@
+<div class="modal-body">
+    <div class="content">
+      <header>
+          <h3 data-localize="general.source-materials-estimations">Source materials estimation</h3>
+      </header>
+      <div class="note note-warning">
+        <span><i class="icon-info"></i> <span data-localize="modules.quotes.approximation-info">These statistics are only an approximation and may differ slightly from the actual data.</span></span>
+      </div>
+      <table class="table table-striped"> 
+          <thead>
+            <tr>
+                <th data-localize="general.file-name">File name</th>
+                
+                <th data-localize="general.characters">Characters</th>
+                <th data-localize="general.words">Words</th>
+                <th data-localize="general.pages">Pages</th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+            <% $.each(files, function(i, file){ %>
+            <% if(file!=null) { %>
+            <tr>
+                <td><%= file.name %></td>
+                <td><%= file.fileStats.charactersWithSpaces %></td>
+                <td><%= file.fileStats.words %></td>
+                <td><%= file.fileStats.pages %></td>
+            </tr>
+            <% } %>
+            <% }) %>
+            
+        </tbody>
+    </table>
+    
+</div>
+</div>
+
+
+<div class="modal-footer">
+    <a class="link-return pull-left"><i class="icon-return"></i> <span data-localize="general.source-files">Source files</span></a>
+    <button class="btn btn-cta next-step btn-large"><span data-localize="general.summary">Summary</span> <i class="icon-next-step"></i></button>
+</div>
